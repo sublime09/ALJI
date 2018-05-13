@@ -3,10 +3,13 @@ The Active Listening Journal Interaction Project
 By Patrick Sullivan
 '''
 
+import GetReddit
+from Journal import Journal
 
 def main():
 	print("Running Entire ALJI Project...")
-	# progBar = ProgressBar(range(20))
+
+	GetReddit.main()
 
 
 

@@ -3,10 +3,11 @@ Get Reddit part of ALJI project
 '''
 
 from ProgressBar import ProgressBar
-
+from Journal import Journal
 
 def main():
-	pass
+	print("Getting Journal Entries from Reddit...")
+	# progBar = ProgressBar(range(20))
 
 
 if __name__ == '__main__':

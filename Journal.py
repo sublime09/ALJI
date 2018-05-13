@@ -5,7 +5,7 @@ ALJI project Journal source
 def main():
 	pass
 
-class JournalSource:
+class Journal:
 
 	def __init__(self):
 		self.url = None

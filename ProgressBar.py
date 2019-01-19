@@ -2,7 +2,6 @@
 # shows a progress bar in the console for long processes
 import sys
 from time import time, sleep
-from AljiUtils import millis
 
 def millis():
 	return round(time() * 1000)

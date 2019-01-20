@@ -71,3 +71,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 *.sublime-workspace
+Scholastic Pull/Stories.json

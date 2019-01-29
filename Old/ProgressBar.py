@@ -1,8 +1,10 @@
 # author Patrick Sullivan
 # shows a progress bar in the console for long processes
 import sys
-from AljiUtils import millis
+from time import time, sleep
 
+def millis():
+	return round(time() * 1000)
 
 class ProgressBar:
 	pctTemplate = '{:.0%}'
@@ -42,13 +44,12 @@ class ProgressBar:
 		sys.stdout.flush()
 
 if __name__ == '__main__':
-	import time
 	print("Testing ProgressBar...")
 	begin, end = 3, 16
 	name = "Test %s-%s"%(begin, end)
 	p = ProgressBar(range(begin, end+1), name=name)
 	for i in p:
 		p.printBar("Test Count=",i)
-		time.sleep(0.1)
+		sleep(0.1)
 	print("Done!")
 	

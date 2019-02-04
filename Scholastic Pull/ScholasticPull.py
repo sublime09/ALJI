@@ -115,24 +115,34 @@ def driverUrlToSoups(driver, url):
 		yield contentNum+1, smallSoups[contentNum]
 
 
+def soupToStoryLines(soupLines):
+	blankLinesInARow = 0
+	for line in soupLines:
+		if len(line.strip()) == 0:
+			blankLinesInARow += 1
+			if blankLinesInARow == 2:
+				yield ""
+		else:
+			yield line
+			blankLinesInARow = 0
+
+def testFlag(name, test):
+	if test:
+		print("ERROR Flag", name, "is True")
+		import pdb
+		pdb.set_trace()
+
 def soupToStory(smallSoup):
 	soupLines = smallSoup.findAll(text=True)
-	storyLines = [a for a in soupLines if a not in ['', '\n']]
-	storyText = '\n'.join(storyLines)
+	soupLines = [t for t in soupLines if "Comment" not in str(type(t))]
+	storyLines = list(soupToStoryLines(soupLines))
+	storyText = '\n'.join(storyLines).strip()
 
-	noSoup = len(smallSoup.text) < 30
-	fewLines = len(storyLines) < 3
-	longStory = len(storyText) > 50000
-	
-	if noSoup or fewLines or longStory:
-		print("Bad story!!!! noSoup, fewLines, longStory =", noSoup, fewLines, longStory)
-		import pdb; pdb.set_trace()
-
-	duplicates = len(storyLines) == len(set(storyLines))
-	if duplicates:
-		print("Duplicate lines found!!!!")
-		import pdb; pdb.set_trace()
-
+	testFlag("noSoup", len(smallSoup.text) < 30)
+	testFlag("fewLines", len(storyLines) < 3)
+	testFlag("longStory", len(storyText) > 45000)
+	testFlag("shortStory", len(storyText) < 2000)
+	testFlag("manyDupLines", len(set(storyLines)) < .4 * len(storyLines))
 	return storyText
 
 

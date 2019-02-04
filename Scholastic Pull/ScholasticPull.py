@@ -4,11 +4,15 @@ from bs4 import BeautifulSoup
 import json
 from math import ceil
 
+
 FILE_OUTPUT = "Stories.json"
 TOTAL_STORIES = 543
 PER_PAGE = 15
 LAST_PAGE = ceil(TOTAL_STORIES / PER_PAGE)
-PAGE_START, PAGE_END = 1, 37
+PAGE_START, PAGE_END = 1, LAST_PAGE
+# PAGE_ITER = range(0+1, LAST_PAGE+1)
+SLEEP_START = 1
+SLEEP_PER_PAGE = 6
 
 
 def main():
@@ -22,7 +26,7 @@ def main():
 				story = soupToStory(soup)
 				stories[storyNum] = story
 				print("Story #"+str(storyNum), "is length", len(story))
-				if len(story) < 5000:
+				if len(story) < 500:
 					input("CAUTION Press enter to continue....")
 	print("Selenium Done!")
 	stories = doRemovals(stories)
@@ -61,10 +65,11 @@ def jsonSave(obj):
 def getSeleniumDriver():
 	print("Starting Selenium...", end='')
 	baseProfile = webdriver.FirefoxProfile()
-	baseProfile.set_preference("extensions.enabledScopes", 0)  # no addons
-	baseProfile.set_preference("extensions.autoDisableScopes", 15)  # no addons
+	# no addons
+	baseProfile.set_preference("extensions.enabledScopes", 0)
+	baseProfile.set_preference("extensions.autoDisableScopes", 15)
 	driver = webdriver.Firefox(baseProfile)
-	sleep(.5)  # give a bit of extra time to start up
+	sleep(SLEEP_START)  # give a bit of extra time to start up
 	print("done!")
 	return driver
 
@@ -83,7 +88,7 @@ def iterUrls():
 def driverUrlToSoups(driver, url):
 	print("Getting page ... ", end='')
 	driver.get(url)
-	sleep(4)  # waits for page to load
+	sleep(SLEEP_PER_PAGE)  # waits for page to load
 	print("souping ... ", end='')
 	bigSoup = BeautifulSoup(driver.page_source, 'lxml')
 	smallSoups = bigSoup.select('ul.gallery-works div.writing')
@@ -93,22 +98,24 @@ def driverUrlToSoups(driver, url):
 
 
 def soupToStory(smallSoup):
-	tags = smallSoup.select('h1,h2,h3,h4,h5,p,span,div')
+	soupLines = smallSoup.findAll(text=True)
+	storyLines = [a for a in soupLines if a not in ['', '\n']]
+	storyText = '\n'.join(storyLines)
 
-	def iterTagsToLines(tags):
-		emptySpace = 0
-		for t in tags:
-			line = t.text.strip()
-			if line == '<br>' or line == '':
-				emptySpace += 1
-				if emptySpace == 2:
-					yield ''
-			else:
-				yield line
-				emptySpace = 0
-	lines = iterTagsToLines(tags)
-	story = '\n\t'.join(lines)
-	return story
+	noSoup = len(smallSoup.text) < 30
+	fewLines = len(storyLines) < 3
+	longStory = len(storyText) > 50000
+	
+	if noSoup or fewLines or longStory:
+		print("Bad story!!!! noSoup, fewLines, longStory =", noSoup, fewLines, longStory)
+		import pdb; pdb.set_trace()
+
+	duplicates = len(storyLines) == len(set(storyLines))
+	if duplicates:
+		print("Duplicate lines found!!!!")
+		import pdb; pdb.set_trace()
+
+	return storyText
 
 
 if __name__ == '__main__':

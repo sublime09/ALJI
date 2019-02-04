@@ -1,10 +1,13 @@
+import os
+import json
 from time import sleep
 from selenium import webdriver
 from bs4 import BeautifulSoup
-import json
 from math import ceil
+from datetime import date
 
 
+FOLDER_OUT = "Stories"
 FILE_OUTPUT = "Stories.json"
 TOTAL_STORIES = 543
 PER_PAGE = 15
@@ -12,7 +15,7 @@ LAST_PAGE = ceil(TOTAL_STORIES / PER_PAGE)
 PAGE_START, PAGE_END = 1, LAST_PAGE
 # PAGE_ITER = range(0+1, LAST_PAGE+1)
 SLEEP_START = 1
-SLEEP_PER_PAGE = 6
+SLEEP_PER_PAGE = 3.5
 
 
 def main():
@@ -25,21 +28,35 @@ def main():
 				soups[storyNum] = soup
 				story = soupToStory(soup)
 				stories[storyNum] = story
-				print("Story #"+str(storyNum), "is length", len(story))
-				if len(story) < 500:
-					input("CAUTION Press enter to continue....")
+				print("Story #"+str(storyNum) , end='\t')
+				print("has", story.count('\n'), "lines" ,end ='\t')
+				print("and is length", len(story))
 	print("Selenium Done!")
 	stories = doRemovals(stories)
-	jsonSave(stories)
+	for num, story in stories.items():
+		txtSave(num, story)
+	# jsonSave(stories)
 	print("ScholasticPull is done!")
 
 
-def doRemovals(stories):
-	# removes too small stories
-	stories = {k: v for k, v in stories.items() if len(v.strip()) > 500}
+def txtSave(entryNum, story):
+	if not os.path.exists(FOLDER_OUT):
+		print("Making", FOLDER_OUT, "directory...")
+		os.makedirs(FOLDER_OUT)
 
-	def getSnippet(story):
-		return ' '.join(story[:60].split())
+	entryStr = "Entry" + str(entryNum).zfill(3)
+	todayStr = str(date.today())
+	filename = entryStr + " " + todayStr + ".txt"
+	filepath = FOLDER_OUT + os.path.sep + filename
+	print("Saving", filepath, "...", end='')
+	with open(filepath, 'w', encoding="utf-8") as fileObj:
+		fileObj.write(story)
+	print("done")
+	
+
+def doRemovals(stories):
+	def getSnippet(oneLongStory):
+		return ' '.join(oneLongStory[:60].split())
 
 	snippets = set()
 	uniqueStories = {}
@@ -53,6 +70,7 @@ def doRemovals(stories):
 		if num not in uniqueStories:
 			print("Deleted DUP:", num, ":", getSnippet(stories[num]))
 	return uniqueStories
+
 
 
 def jsonSave(obj):

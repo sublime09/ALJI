@@ -1,0 +1,12 @@
+# pip requirements file
+
+# Scholastic Pull:
+-r "Scholastic Pull/requirements.txt"
+
+
+# Likely needed in future:
+# pyQT5
+# sklearn
+# pandas???
+# numpy
+# nltk

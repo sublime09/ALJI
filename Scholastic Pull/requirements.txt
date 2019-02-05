@@ -1,0 +1,5 @@
+# pip requirements file
+
+selenium >= 3.141
+# Gecko >= 1.0.19 # UNKNOWN IF WORKS THROUGH PIP
+beautifulsoup4 >= 4.6.3

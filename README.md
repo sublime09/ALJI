@@ -1,19 +1,16 @@
 # ALJI
 The Active Listening Journal Interaction project.  Detecting and intervening in mental health crises from journal entry analysis.  
 
-**Setup**:
-```console
-virtualenv env
-env/Scripts/activate
-pip -r requirements.txt
-```
-
+**Setup**: 
+1. Install python 3.6 and upgrade pip 
+1. **Recommended**: Use [virtualenv](https://virtualenv.pypa.io/en/stable/) for easy python package management in projects.  
+    - Run `virtualenv env` and then `env/Scripts/activate`
+1. `pip -r requirements.txt`
 
 ### Scholastic Pull:
 
 For pulling journal entries off of the scholastic awards website
-`python 'Scholastic Pull'/ScholasticPull.py`
-
+```python ScholasticPull.py```
 
 Uses: 
 - Python3.6

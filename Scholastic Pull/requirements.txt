@@ -1,5 +1,12 @@
 # pip requirements file
 
+pip >= 19.0.1
 selenium >= 3.141
-# Gecko >= 1.0.19 # UNKNOWN IF WORKS THROUGH PIP
 beautifulsoup4 >= 4.6.3
+lxml >= 4.3
+cutie >= 0.2.2
+
+# Download geckodriver from here:
+# https://github.com/mozilla/geckodriver/releases/tag/v0.9.0
+# And put "geckodriver.exe" in the virtualenv or on PATH
+# installing Gecko from pip doesn't work!

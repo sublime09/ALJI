@@ -1,16 +1,30 @@
 # ALJI
-The Active Listening Journal Interaction project
+The Active Listening Journal Interaction project.  Detecting and intervening in mental health crises from journal entry analysis.  
+
+**Setup**:
+```console
+virtualenv env
+env/Scripts/activate
+pip -r requirements.txt
+```
+
 
 ### Scholastic Pull:
 
 For pulling journal entries off of the scholastic awards website
+`python 'Scholastic Pull'/ScholasticPull.py`
+
 
 Uses: 
-- Selenium (Firefox) 
-  - Be sure to install gecko on your system path
-- Beautiful Soup 4
+- Python3.6
+- [Selenium WebDriver](https://docs.seleniumhq.org/) (Firefox) 
+  - Be sure to [install gecko](https://github.com/mozilla/geckodriver/releases) 
+  - Add the .exe file to your system path
+- [Beautiful Soup 4](https://pypi.org/project/beautifulsoup4/)
+  - Uses the lxml 4.3 parser
 
-### Journal ANA:
+
+### SOON: Journal ANA:
 
 For the preliminary journal entry analysis (sentiment, LWIC, etc...)
 
@@ -19,11 +33,11 @@ Uses:
 - ANEW
 - VaderSentiment
 
-### Label Helper:
+### SOON: Label Helper:
 
 For expert labeling of language signaling mental health crises
 
-### ALJI:
+### SOON: ALJI:
 
 For real use of mental health crisis detection of one individual
 

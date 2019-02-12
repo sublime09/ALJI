@@ -13,13 +13,11 @@ For pulling journal entries off of the scholastic awards website
 ```python ScholasticPull.py```
 
 Uses: 
-- Python3.6
 - [Selenium WebDriver](https://docs.seleniumhq.org/) (Firefox) 
   - Be sure to [install gecko](https://github.com/mozilla/geckodriver/releases) 
   - Add the .exe file to your system path
 - [Beautiful Soup 4](https://pypi.org/project/beautifulsoup4/)
   - Uses the lxml 4.3 parser
-
 
 ### SOON: Journal ANA:
 

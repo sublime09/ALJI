@@ -1,5 +1,5 @@
 # ALJI
-The Active Listening Journal Interaction project.  Detecting and intervening in mental health crises from journal entry analysis.  
+The **A**ctive **L**istening **J**ournal **I**nteraction project.  Detecting and intervening in mental health crises from journal entry analysis.  
 
 **Setup**: 
 1. Install [Python](https://www.python.org/) 3.6 and then upgrade pip

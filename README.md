@@ -2,9 +2,9 @@
 The Active Listening Journal Interaction project.  Detecting and intervening in mental health crises from journal entry analysis.  
 
 **Setup**: 
-1. Install python 3.6 and upgrade pip 
+1. Install [Python](https://www.python.org/) 3.6 and then upgrade pip
 1. **Recommended**: Use [virtualenv](https://virtualenv.pypa.io/en/stable/) for easy python package management in projects.  
-    - Run `virtualenv env` and then `env/Scripts/activate`
+    - Easy as `virtualenv env` and then `env/Scripts/activate`.  `deactivate` when done working. 
 1. `pip -r requirements.txt`
 
 ### Scholastic Pull:
@@ -26,7 +26,8 @@ Uses:
 For the preliminary journal entry analysis (sentiment, LWIC, etc...)
 
 Uses:
-- LIWC
+- [LIWC](https://liwc.wpengine.com/)
+- [Empath](https://github.com/Ejhfast/empath-client)
 - ANEW
 - VaderSentiment
 

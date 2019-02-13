@@ -5,7 +5,7 @@ The **A**ctive **L**istening **J**ournal **I**nteraction project.  Detecting and
 1. Install [Python](https://www.python.org/) 3.6 and then upgrade pip
 1. **Recommended**: Use [virtualenv](https://virtualenv.pypa.io/en/stable/) for easy python package management in projects.  
     - Easy as `virtualenv env` and then `env/Scripts/activate`.  `deactivate` when done working. 
-1. `pip -r requirements.txt`
+1. `pip install -r requirements.txt`
 
 ### Scholastic Pull:
 For pulling journal entries off of the scholastic awards website

@@ -1,12 +1,12 @@
 from math import ceil
 from datetime import date
 import cutie
-import logging
+import logging as log
 
 logArgs = dict(filemode= 'w',
 	filename='pulling.log',
-	level=logging.DEBUG)
-logging.basicConfig(**logArgs)
+	level=log.DEBUG)
+log.basicConfig(**logArgs)
 
 
 # FOLDER_OUT = "Stories"
@@ -46,7 +46,7 @@ def doManualConfig():
 	Config.batchFolderOut = input("Batch Folder Name?")
 	Config.jsonOnTheGo = askYN("JSON save intermediate files?")
 	Config.hiddenBrowser = askYN("Hide the browser in the background?")
-	logging.debug("Manual Configuration Done")
+	log.debug("Manual Configuration Done")
 	print("Configuration Complete")
 	print("The rest of the program may take a while to run...")
 	Config.skipYNPrompts = askYN("Answer Yes to all future prompts?")

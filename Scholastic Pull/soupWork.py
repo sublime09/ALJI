@@ -8,9 +8,9 @@ def genSoupsFromPageSources(pageSources):
 	endPage = Config.end
 	print("Souping page", currPage,"to", endPage, " ... ")
 	for pgSource in pageSources:
-		logging.debug("Souping page# %s", currPage)
+		log.debug("Souping page# %s", currPage)
 		bigSoup = BeautifulSoup(pgSource, 'lxml')
-		logging.info("Souped page# %s", currPage)
+		log.info("Souped page# %s", currPage)
 		yield bigSoup
 		currPage += 1
 
@@ -21,7 +21,7 @@ def genSplitBigSoups(bigSoups):
 	endEntry = Config.end * PER_PAGE
 	for bSoup in bigSoups:
 		for soup in bSoup.select(cssSelector):
-			logging.info("Split soup for entry# %s", currEntry)
+			log.info("Split soup for entry# %s", currEntry)
 			yield soup
 			currEntry += 1
 
@@ -31,7 +31,7 @@ def genLinedTextFromSoups(lilSoups):
 	endEntry = Config.end * PER_PAGE
 	for soup in lilSoups:
 		if len(soup.text) < 30:
-		    logging.warning("len(soup.text) < 30")
+		    log.warning("len(soup.text) < 30")
 		soupLines = soup.findAll(text=True)
 		soupLines = [t for t in soupLines if "Comment" not in str(type(t))]
 		yield soupLines

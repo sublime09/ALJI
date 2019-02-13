@@ -10,16 +10,16 @@ def genStoriesFromLinedTexts(linedTexts):
 		numChars = len(story)
 		numLines = len(lines)
 		if numLines < 3:
-			logging.warning("numLines < 3 !!!!")
+			log.warning("numLines < 3 !!!!")
 		if numChars > 45000:
-			logging.warning("numChars > 45000  !!!")
+			log.warning("numChars > 45000  !!!")
 		if numChars < 2000:
-			logging.warning("numChars < 2000  !!!")
+			log.warning("numChars < 2000  !!!")
 		if len(set(lines)) * 3 < numLines:
-			logging.warning("Many duplicate lines in this story!!!")
+			log.warning("Many duplicate lines in this story!!!")
 
 		fmtStr = "Story #%s is %s lines and %s characters"
-		logging.info(fmtStr, currEntry, numLines, numChars)
+		log.info(fmtStr, currEntry, numLines, numChars)
 		yield story
 		currEntry += 1
 
@@ -47,7 +47,7 @@ def genDoRemovals(stories):
 	for story in stories:
 		snip = getSnippet(story)
 		if snip in snippets:
-			logging.warning("Deleted DUP: #%s SNIPPET: %s", currEntry, snip)
+			log.warning("Deleted DUP: #%s SNIPPET: %s", currEntry, snip)
 		else:
 			snippets.add(snip)
 			yield story

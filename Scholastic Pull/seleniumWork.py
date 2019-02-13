@@ -9,7 +9,7 @@ def genPageSourcesFromWeb():
 	with getSeleniumDriver() as driver:
 		for pageNum in configPages:
 			url = getScholasticUrl(pageNum)
-			logging.debug("Fetching Page %s then sleeping...", pageNum)
+			log.debug("Fetching Page %s then sleeping...", pageNum)
 			driver.get(url)
 			sleep(Config.pagePauseTime)  # waits for page to load
 			yield driver.page_source
@@ -31,7 +31,7 @@ def getSeleniumDriver():
 	baseProfile.set_preference("extensions.autoDisableScopes", 15)
 
 	if Config.hiddenBrowser:
-		logging.warning("Hidden Browser Not implemented yet, sorry")
+		log.warning("Hidden Browser Not implemented yet, sorry")
 		# baseProfile.add_command_line_options('-headless')
 		# However, on current versions of Firefox (up to and including
 		# Nightly 58.0a1) running on Windows 10 this flag doesn’t seem

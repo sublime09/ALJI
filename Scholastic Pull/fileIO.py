@@ -16,7 +16,7 @@ def txtSave(stories):
 		filepath = os.path.join(outPath, filename)
 		with open(filepath, 'w', encoding="utf-8") as fileObj:
 			fileObj.write(story)
-		logging.info("File written: %s", filepath)
+		log.info("File written: %s", filepath)
 		currEntry += 1
 
 	print("Done!")

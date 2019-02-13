@@ -1,11 +1,15 @@
 *secret
 secret*
+*.log
 Scholastic Pull/Stories/*
+
+
+# Sublime workspace
+*.sublime-workspace
 
 \~*.xlsx
 \~*.docx
 \~*.doc
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -79,5 +83,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-*.sublime-workspace
-Scholastic Pull/Stories.json
+

@@ -3,7 +3,7 @@ from seleniumWork import genPageSourcesFromWeb
 from soupWork import genSoupsFromPageSources, \
 		genSplitBigSoups, genLinedTextFromSoups
 from storyWork import genStoriesFromLinedTexts, genDoRemovals
-from fileIO import jsonSave, jsonReadDict, txtSave
+from fileIO import txtSave
 
 def main():
 	if not askYN("Do everything using defaults?"):

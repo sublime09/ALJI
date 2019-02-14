@@ -9,23 +9,17 @@ logArgs = dict(filemode= 'w',
 log.basicConfig(**logArgs)
 
 
-# FOLDER_OUT = "Stories"
-# FILE_OUTPUT = "Stories.json"
 TOTAL_STORIES, PER_PAGE = 543, 15
 TOTAL_PAGES = ceil(TOTAL_STORIES / PER_PAGE)
 FIRST_PAGE, LAST_PAGE = 1, TOTAL_PAGES
-# PAGE_START, PAGE_END = 1, LAST_PAGE
-# SLEEP_START = 1
-# SLEEP_PER_PAGE = 3.5
 inputNum = cutie.get_number
 
 class Config:
 	skipYNPrompts = True
-	start, end = FIRST_PAGE+3, 2+3
+	start, end = FIRST_PAGE, LAST_PAGE
 	pagePauseTime = 3.5
 	mainFolderOut = "Stories"
 	batchFolderOut = str(date.today())
-	jsonOnTheGo = False
 	hiddenBrowser = True
 
 def askYN(*args, **kwargs):
@@ -44,7 +38,6 @@ def doManualConfig():
 	Config.pagePauseTime = inputNum("Pause time per page?", min_value=0)
 	Config.mainFolderOut = input("Main Folder Name?")
 	Config.batchFolderOut = input("Batch Folder Name?")
-	Config.jsonOnTheGo = askYN("JSON save intermediate files?")
 	Config.hiddenBrowser = askYN("Hide the browser in the background?")
 	log.debug("Manual Configuration Done")
 	print("Configuration Complete")

@@ -3,7 +3,7 @@
 	[
 		{
 			"path": ".", 
-            "folder_exclude_patterns": ["env", "__pycache__", "Stories"]
+            "folder_exclude_patterns": ["env", "__pycache__", "Essays"]
 		}
 	]
 }

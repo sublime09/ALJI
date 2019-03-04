@@ -3,6 +3,9 @@
 # Scholastic Pull:
 -r "Scholastic Pull/requirements.txt"
 
+# JournalANA:
+-r "JournalANA/requirements.txt"
+
 
 # Likely needed in future:
 # pyQT5

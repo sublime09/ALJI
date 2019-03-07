@@ -1,12 +1,13 @@
 # pip requirements file
 
 pip >= 19.0.1
-# cutie >= 0.2.2
+cutie >= 0.2.2
 empath >= 0.89
 nltk >= 3.4
 
-# NLTK tokenizer needs the 'punkt' package. 
+# NLTK tokenizer uses 'punkt' corpus and . 
 # Download using the following python commands:
 # >>> import nltk
 # >>> nltk.download('punkt')
+# >>> nltk.download('wordnet')
 

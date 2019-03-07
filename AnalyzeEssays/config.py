@@ -1,13 +1,17 @@
+import sys
+if not hasattr(sys, 'real_prefix'):
+	print("WARNING: Not using a virtualenv...")
+	prompt = "Continue without activating virtual environment? "
+	resp = input(prompt).strip().lower()
+	if resp not in "yes y".split():
+		print("Exiting...")
+		exit()
+
 import cutie
 import logging as log
 # from inspect import getmembers
 
 askYN = cutie.prompt_yes_or_no
-
-if not hasattr(sys, 'real_prefix'):
-	print("Venv")
-	if askYN("WARN: Venv is not running. Cancel?"):
-		exit()
 
 logArgs = dict(filemode= 'w',
 	filename='EssayAnalysis.log',

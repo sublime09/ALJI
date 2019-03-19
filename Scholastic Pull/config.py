@@ -18,7 +18,7 @@ class Config:
 	skipYNPrompts = True
 	start, end = FIRST_PAGE, LAST_PAGE
 	pagePauseTime = 3.5
-	mainFolderOut = "Stories"
+	mainFolderOut = "Essays"
 	batchFolderOut = str(date.today())
 	hiddenBrowser = True
 

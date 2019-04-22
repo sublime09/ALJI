@@ -6,9 +6,11 @@
 # JournalANA:
 -r "JournalANA/requirements.txt"
 
+# Label Helper:
+-r "Label Helper/requirements.txt"
+
 
 # Likely needed in future:
-# pyQT5
 # sklearn
 # pandas???
 # numpy

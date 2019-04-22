@@ -3,7 +3,8 @@
 	[
 		{
 			"path": ".", 
-            "folder_exclude_patterns": ["env", "__pycache__", "Essays"]
+            "folder_exclude_patterns": ["env", "__pycache__", "Essays"], 
+            "file_exclude_patterns": ["*.url", "*.SOFTLINK"]
 		}
 	]
 }

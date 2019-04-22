@@ -30,7 +30,7 @@ Considered for future use:
 - [VaderSentiment](https://github.com/cjhutto/vaderSentiment) (Valence Aware Dictionary and sEntiment Reasoner)
 
 ### ALJI Label Helper:
-For expert labeling of language signaling mental health crises.  Uses: 
+For expert labeling of language signaling mental health crises.  After updates to .ui files, simply run `make all` to compile the .ui files into the needed .py files.  `make clean` removes the generated files. Uses: 
 - [PyQt5](https://www.riverbankcomputing.com/software/pyqt/) which uses the [GPLv3 license](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
  
 ### Soon: ALJI Trainer:

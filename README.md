@@ -1,10 +1,11 @@
-# ALJIT
+# ALJI
 The **A**ctive **L**istening **J**ournal **I**nteraction project.  ALJI aims to detect and intervene in mental health crises by analyzing a personal journal entry while maintaining the author's privacy.  
 
 **Setup**: 
 1. Install [Python](https://www.python.org/) 3.7 and then upgrade pip to 19.  Newer versions of software and packages may work, but are not tested. 
 1. **Recommended**: Use [virtualenv](https://virtualenv.pypa.io/en/stable/) for easy python package management in projects.  
-    - Easy to setup with: `virtualenv env`  Activate with:  `env/Scripts/activate`  Deactivate with: `deactivate` 
+    - Easy to setup with: `virtualenv env`  Activate with either `env/Scripts/activate`   Deactivate with: `deactivate` 
+    - *Powershell*: You may need to `Set-ExecutionPolicy RemoteSigned` due to [this update](https://virtualenv.pypa.io/en/stable/changes/#v16-2-0-2018-12-31)
 1. `pip install -r requirements.txt`  This installs the required for packages for ***every*** component of the ALJI project.  Some components need some minor additions or configuration (see below).  Navigating to and focusing on one component is advisable. 
 
 

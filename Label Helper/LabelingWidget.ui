@@ -6,38 +6,271 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>805</width>
+    <height>707</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ALJI Label Helper Task</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>PushButton</string>
+    <widget class="QTextEdit" name="JournalEntryText">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="documentTitle">
+      <string/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>Lady Sings The Blues
+
+There is something addicting about the grunge. The risqué blended with original grit. There is something about the edge that I dance on, tightrope walker tip toe on, when the sound of the blues leaves my lungs. I breathe – then honesty, woven around pain and soaked strife, echoes through the room. Vibrations shake the chandeliers, sending dust swirling in circles. I hit that note, that minor cord, that Etta James “All I Could Do Was Cry” note, and something inside of me breaks. If I hit it right, your heart should break. If I feel it right, my cage that I keep hidden somewhere between my lungs, locked behind ribs and supposedly important organs, should shatter. Shatter spilling soul through amperes into the ears of unsuspecting listeners.
+
+That cage holds it all.
+
+It is the source that I draw from. It is what allows me to walk into the smoky jazz club on Cedar, snake around the tables filled with black velvet clad women and men in dull gray suits, run my hands over the dingy white and black keys of the piano that 50 years of soul artists have found solace in, dig my heels into the red carpet under my feet and stare up into the lights, head held high – undoubtedly a proud black woman. There’s a moment of silence. The faces at the tables are hard to make out from the too dim lights. It feels like my heart stops beating.
+
+Boom
+
+Boom
+
+Silence
+
+Then the steady rhythm of the drums, layered with the hum of the bass starts. The piano peppers out a melody made for the harmony of this girl turned woman. Breathe. My jaw drops, muscle clench, then E?, C, D?, A ?.
+
+Call it soul.
+
+Call it blues.
+
+Call it jazz.
+
+I call it the key to unlocking the photo album in my mind where I store the image of the 12 year old boy’s body bleeding out on a west-side sidewalk, next to the pre-memories of being chained to a tree for days, reduced to nothing more than a nigger who talks white. I call it the vehicle for grappling with the weight of 350 years of not even being human. They try not to remember the 3/5th’s of a person kind of days. I call it my way of explaining how it feels to wake up, look in the mirror, see black breasts and be reminded you’re already set back two steps. I call it the only way I can wrap my head around knowing that I will either see my black babies dead or in jail by the age of 20.
+
+When the blues swings through…
+
+When the air fills my lungs and my diaphragm shakes and I wail to a God I’m hoping exists, my cage breaks. You can hear it in the timbre. You can feel it in the fade of the bass, the build of the drums. That one minor note holds it all.
+      </string>
+     </property>
+     <property name="acceptRichText">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>PLACEHOLDER TEXT</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="LabelingLayout">
+     <item>
+      <widget class="QLabel" name="CrisisTitleLabel">
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Crisis Labels</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="CrisisListWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="NavLayout">
+       <item>
+        <widget class="QToolButton" name="BackButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Back</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>images/back.png</normaloff>images/back.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+Left</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="TaskNumberLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Journal Entry ??/??</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="ForwardButton">
+         <property name="text">
+          <string>Forward</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>images/forward.png</normaloff>images/forward.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+Right</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="FontLayout">
+       <item>
+        <widget class="QFontComboBox" name="fontComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="fontFilters">
+          <set>QFontComboBox::ProportionalFonts</set>
+         </property>
+         <property name="currentFont">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="PointSizeSpinBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="suffix">
+          <string> pt.</string>
+         </property>
+         <property name="minimum">
+          <number>5</number>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+         <property name="value">
+          <number>11</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>LabelingWidget</receiver>
-   <slot>close()</slot>
+   <sender>fontComboBox</sender>
+   <signal>currentFontChanged(QFont)</signal>
+   <receiver>JournalEntryText</receiver>
+   <slot>setCurrentFont(QFont)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>274</x>
-     <y>239</y>
+     <x>603</x>
+     <y>685</y>
     </hint>
     <hint type="destinationlabel">
-     <x>345</x>
-     <y>-9</y>
+     <x>372</x>
+     <y>582</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PointSizeSpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>JournalEntryText</receiver>
+   <slot>setFontWeight(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>764</x>
+     <y>687</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>416</x>
+     <y>565</y>
     </hint>
    </hints>
   </connection>

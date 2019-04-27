@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets
 from IntroWidget import Ui_IntroWidget
 from LabelingWidget import Ui_LabelingWidget
 
+
 def main():
 	app = QtWidgets.QApplication(sys.argv)
 
@@ -18,6 +19,7 @@ def main():
 
 	# do connections...
 	setupConnections(introWidget, labelWidget)
+	addLabelingFuncs(labelWidget)
 
 	# show first window...
 	introWidget.show()
@@ -34,6 +36,23 @@ def setupConnections(introWidget, labelWidget):
 		labelWidget.show()
 
 	continueButton.clicked.connect(switchWindows)
+
+
+def addLabelingFuncs(labelWidget):
+	def updateFont():
+		font = labelWidget.ui.fontComboBox.currentFont()
+		size = labelWidget.ui.PointSizeSpinBox.value()
+		font.setPointSize(size)
+		labelWidget.ui.JournalEntryText.setFont(font)
+
+	# TODO: limit fonts to something reasonable
+	# self.fontComboBox.setFontFilters(QtWidgets.QFontComboBox.ProportionalFonts)
+	labelWidget.ui.PointSizeSpinBox.valueChanged.connect(updateFont)
+	labelWidget.ui.fontComboBox.currentFontChanged.connect(updateFont)
+
+	# TODO: set text from journals
+	labelWidget.ui.JournalEntryText.setText("Hello world! \n\n does newLine work?")
+
 
 if __name__ == '__main__':
 	main()

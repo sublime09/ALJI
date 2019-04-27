@@ -41,34 +41,11 @@
       <bool>true</bool>
      </property>
      <property name="html">
-      <string>Lady Sings The Blues
-
-There is something addicting about the grunge. The risqué blended with original grit. There is something about the edge that I dance on, tightrope walker tip toe on, when the sound of the blues leaves my lungs. I breathe – then honesty, woven around pain and soaked strife, echoes through the room. Vibrations shake the chandeliers, sending dust swirling in circles. I hit that note, that minor cord, that Etta James “All I Could Do Was Cry” note, and something inside of me breaks. If I hit it right, your heart should break. If I feel it right, my cage that I keep hidden somewhere between my lungs, locked behind ribs and supposedly important organs, should shatter. Shatter spilling soul through amperes into the ears of unsuspecting listeners.
-
-That cage holds it all.
-
-It is the source that I draw from. It is what allows me to walk into the smoky jazz club on Cedar, snake around the tables filled with black velvet clad women and men in dull gray suits, run my hands over the dingy white and black keys of the piano that 50 years of soul artists have found solace in, dig my heels into the red carpet under my feet and stare up into the lights, head held high – undoubtedly a proud black woman. There’s a moment of silence. The faces at the tables are hard to make out from the too dim lights. It feels like my heart stops beating.
-
-Boom
-
-Boom
-
-Silence
-
-Then the steady rhythm of the drums, layered with the hum of the bass starts. The piano peppers out a melody made for the harmony of this girl turned woman. Breathe. My jaw drops, muscle clench, then E?, C, D?, A ?.
-
-Call it soul.
-
-Call it blues.
-
-Call it jazz.
-
-I call it the key to unlocking the photo album in my mind where I store the image of the 12 year old boy’s body bleeding out on a west-side sidewalk, next to the pre-memories of being chained to a tree for days, reduced to nothing more than a nigger who talks white. I call it the vehicle for grappling with the weight of 350 years of not even being human. They try not to remember the 3/5th’s of a person kind of days. I call it my way of explaining how it feels to wake up, look in the mirror, see black breasts and be reminded you’re already set back two steps. I call it the only way I can wrap my head around knowing that I will either see my black babies dead or in jail by the age of 20.
-
-When the blues swings through…
-
-When the air fills my lungs and my diaphragm shakes and I wail to a God I’m hoping exists, my cage breaks. You can hear it in the timbre. You can feel it in the fade of the bass, the build of the drums. That one minor note holds it all.
-      </string>
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="acceptRichText">
       <bool>false</bool>
@@ -241,38 +218,5 @@ When the air fills my lungs and my diaphragm shakes and I wail to a God I’m ho
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>fontComboBox</sender>
-   <signal>currentFontChanged(QFont)</signal>
-   <receiver>JournalEntryText</receiver>
-   <slot>setCurrentFont(QFont)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>603</x>
-     <y>685</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>372</x>
-     <y>582</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>PointSizeSpinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>JournalEntryText</receiver>
-   <slot>setFontWeight(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>764</x>
-     <y>687</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>416</x>
-     <y>565</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

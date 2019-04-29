@@ -8,9 +8,7 @@ BlockInput, On
 ; if WinExist("ALJI") {
 	; MsgBox "Found ALJI window..."
 	; WinActivate
-Send {AltDown}F{AltUp}
-Send S
-Send A
+Send {AltDown}f{AltUp}sa
 ; } else {
 ; 	MsgBox "No ALJI window found..."
 ; }

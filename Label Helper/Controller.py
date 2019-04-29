@@ -3,6 +3,7 @@ import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
 from IntroWidget import Ui_IntroWidget
 from LabelingWidget import Ui_LabelingWidget
+# from ConfirmCrisisLabelDelete import ConfirmCrisisLabelDelete
 
 
 def main():

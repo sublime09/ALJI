@@ -1,10 +1,10 @@
 # pip requirements file
-pip >= 19.0.3
+pip >= 19.1
 
-pyqt5 >= 5.12.1
 pyqt5-tools >= 5.11.3.1.4
+# pyqt5-tools requires specific version of pyqt5
+# pyqt5 >= 5.11.3
 
 ### MAYBE?
-### python-qt5 >= 0.3.0
 ### cutie >= 0.2.2
 

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>DelCrisisDialog</class>
+ <widget class="QDialog" name="DelCrisisDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>329</width>
+    <height>172</height>
+   </rect>
+  </property>
   <property name="minimumSize">
    <size>
-    <width>316</width>
-    <height>125</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>419</width>
-    <height>202</height>
+    <width>329</width>
+    <height>172</height>
    </size>
   </property>
   <property name="font">
@@ -22,7 +24,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Confirm Crisis Label Delete?</string>
+   <string>Delete Crisis Label?</string>
   </property>
   <layout class="QVBoxLayout">
    <item>
@@ -48,38 +50,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>247</x>
-     <y>164</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>201</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>315</x>
-     <y>164</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>201</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

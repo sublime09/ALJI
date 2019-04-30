@@ -31,8 +31,10 @@ Considered for future use:
 - [VaderSentiment](https://github.com/cjhutto/vaderSentiment) (Valence Aware Dictionary and sEntiment Reasoner)
 
 ### ALJI Label Helper:
-For expert labeling of language signaling mental health crises.  After updates to .ui files, simply run `make all` to compile the .ui files into the needed .py files.  `make clean` removes the generated files. Uses: 
+For enabling experts to label journal texts for language that signals a mental health crisis.  Uses: 
 - [PyQt5](https://www.riverbankcomputing.com/software/pyqt/) which uses the [GPLv3 license](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
+- (Optional) [Make](https://www.gnu.org/software/make/) for quickly building our .ui files into python scripts and setting up a development environment. Valid commands are `make` ; `make run` ; `make clean`; `make dev` and `make designer`. Also see: [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) and [MinGW](http://mingw.org/)
+
  
 ### Soon: ALJI Trainer:
 For the training of machine learning models that can predict a mental heath crisis through journal language

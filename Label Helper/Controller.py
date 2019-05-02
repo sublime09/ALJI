@@ -26,7 +26,7 @@ class Controller:
 		# do connections...
 		self.connectIntroToTask()
 		self.setupJournalNav()
-		self.setupJournalLabeling()
+		self.setupJournalLabeling() #TODO
 		self.setupFontChanges()
 		self.addCustomCrisisFuncs()
 
@@ -43,6 +43,8 @@ class Controller:
 	def setupJournalLabeling(self):
 		# journalDisplay = self.labeler.ui.journalEntryText
 		# journalDisplay.setText(self.model.currentText())
+		pass
+
 
 
 	def setupJournalNav(self):

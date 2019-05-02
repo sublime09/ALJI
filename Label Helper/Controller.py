@@ -1,5 +1,6 @@
 import sys
 
+from CrisisModel import CrisisModel
 from PyQt5 import QtWidgets, QtGui, QtCore
 from IntroWidget import Ui_IntroWidget
 from LabelingWidget import Ui_LabelingWidget
@@ -13,6 +14,8 @@ def toWidget(wigObject):
 
 class Controller:
 	def __init__(self):
+		self.model = CrisisModel(1)
+
 		self.app = QtWidgets.QApplication(sys.argv)
 
 		# setup widgets and their uis
@@ -22,8 +25,8 @@ class Controller:
 
 		# do connections...
 		self.connectIntroToTask()
-		self.setupJournal()    # TODO
-		self.setupJournalNav() # TODO
+		self.setupJournalNav()
+		self.setupJournalLabeling()
 		self.setupFontChanges()
 		self.addCustomCrisisFuncs()
 
@@ -37,22 +40,39 @@ class Controller:
 		self.intro.show()
 		sys.exit(self.app.exec_())
 
+	def setupJournalLabeling(self):
+		# journalDisplay = self.labeler.ui.journalEntryText
+		# journalDisplay.setText(self.model.currentText())
 
-	def setupJournal(self):
-		journalDisplay = self.labeler.ui.journalEntryText
-		journalDisplay.setText("Hello world! \n\n does newLine work?")
-		# TODO: set text from journals
-		pass
 
 	def setupJournalNav(self):
-		# TODO: set nav across journals
-		pass
+		def updateJournal():
+			journalDisplay = self.labeler.ui.journalEntryText
+			journalDisplay.setText(self.model.currentText())
+			taskLabel = self.labeler.ui.taskNumberLabel
+			args = dict(num=self.model.taskNum, total=self.model.taskTotal)
+			newText = "Journal Task {num}/{total}".format(**args)
+			taskLabel.setText(newText)
+		def goNext():
+			self.model.nextJ()
+			updateJournal()
+		def goBack():
+			self.model.prevJ()
+			updateJournal()
+		updateJournal()
+		self.labeler.ui.backButton.clicked.connect(goBack)
+		self.labeler.ui.forwardButton.clicked.connect(goNext)
 
 	def addCrisisLabel(self, cName):
-		# TODO: add crisis checked functionality
 		parent = self.labeler.ui.crisisGroupBox
 		parentLayout = self.labeler.ui.crisisGroupBoxLayout
 		cFrame = QtWidgets.QFrame(parent)
+
+		def doCheck():
+			# TODO: add crisis checked functionality
+			throw("Crisis checked!!!!!!")
+			pass
+
 		def doDelete():
 			cFrame.deleteLater()
 			self.delConfirm.close()
@@ -69,6 +89,7 @@ class Controller:
 		crisisCB = QtWidgets.QCheckBox(cFrame)
 		crisisCB.setObjectName("crisisCB_"+cName)
 		crisisCB.setText(cName)
+		crisisCB.clicked.connect(doCheck)
 		hLayout.addWidget(crisisCB)
 		delCrisisButton = QtWidgets.QToolButton(cFrame)
 		delIcon = QtGui.QIcon()

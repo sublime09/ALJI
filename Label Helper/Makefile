@@ -10,10 +10,10 @@ run: all
 	$(scripts)/pyuic5.exe $^ -o $@
 
 dev: all
-	start ../devProject.sublime-project
+	start ../devProject.sublime-project -WindowStyle Hidden
 
 designer:
-	start $(scripts)/designer.exe
+	start $(scripts)/designer.exe -WindowStyle Hidden
 
 clean:
 	rm $(objects)

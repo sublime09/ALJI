@@ -14,17 +14,22 @@ def toWidget(wigObject):
 
 class Controller:
 	def __init__(self):
-		self.model = CrisisModel(1)
-
 		self.app = QtWidgets.QApplication(sys.argv)
 
 		# setup widgets and their uis
 		self.intro = toWidget(Ui_IntroWidget())
 		self.labeler = toWidget(Ui_LabelingWidget())
 		self.delConfirm = toWidget(Ui_DelCrisisDialog())
+		self.model = None 
 
-		# do connections...
+		self.showIntro() # show first window...
+		sys.exit(self.app.exec_())
+
+	def showIntro(self):
 		self.connectIntroToTask()
+		self.intro.show()
+
+	def showLabelTask(self):
 		self.setupJournalNav()
 		self.setupJournalLabeling() #TODO
 		self.setupFontChanges()
@@ -35,16 +40,13 @@ class Controller:
 			self.addCrisisLabel(cName)
 		self.labeler.ui.crisisFrame.deleteLater() #was placeholder 
 
+		self.labeler.show()
 
-		# show first window...
-		self.intro.show()
-		sys.exit(self.app.exec_())
 
 	def setupJournalLabeling(self):
 		# journalDisplay = self.labeler.ui.journalEntryText
 		# journalDisplay.setText(self.model.currentText())
 		pass
-
 
 
 	def setupJournalNav(self):
@@ -117,8 +119,10 @@ class Controller:
 
 	def connectIntroToTask(self):
 		def switchWindows():
+			groupNum = self.intro.ui.groupNumSpinBox.value()
+			self.model = CrisisModel(groupNum)
 			self.intro.hide()
-			self.labeler.show()
+			self.showLabelTask()
 		acceptCheck = self.intro.ui.AcceptCheckBox
 		continueButton = self.intro.ui.ContinueButton
 		acceptCheck.clicked.connect(continueButton.setEnabled)

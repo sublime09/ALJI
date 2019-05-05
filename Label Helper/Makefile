@@ -13,7 +13,7 @@ dev: all
 	start ../devProject.sublime-project -WindowStyle Hidden
 
 designer:
-	start $(scripts)/designer.exe -WindowStyle Hidden
+	start $(scripts)/designer.exe 
 
 clean:
 	rm $(objects)

@@ -1,10 +1,13 @@
 import sys
+from threading import Timer
+from JournalGroup import JournalGroup
 
-from CrisisModel import CrisisModel
 from PyQt5 import QtWidgets, QtGui, QtCore
 from IntroWidget import Ui_IntroWidget
 from LabelingWidget import Ui_LabelingWidget
 from DelCrisisDialog import Ui_DelCrisisDialog
+
+
 
 def toWidget(wigObject):
 	wig = QtWidgets.QWidget()
@@ -21,26 +24,35 @@ class Controller:
 		self.labeler = toWidget(Ui_LabelingWidget())
 		self.delConfirm = toWidget(Ui_DelCrisisDialog())
 		self.model = None 
+		self.autoSaver = Timer(10, self.startAutoSave)
 
 		self.showIntro() # show first window...
-		sys.exit(self.app.exec_())
+
+		result = self.app.exec_()
+		if self.model is not None:
+			self.model.save()
+		self.autoSaver.cancel()
+		sys.exit(result)
 
 	def showIntro(self):
 		self.connectIntroToTask()
 		self.intro.show()
 
-	def showLabelTask(self):
+	def showLabelTask(self, groupNum):
+		self.model = JournalGroup(groupNum)
 		self.setupJournalNav()
-		self.setupJournalLabeling() #TODO
+		self.updateJournalAndLabels()
 		self.setupFontChanges()
 		self.addCustomCrisisFuncs()
-
-		basicCrises = "Suicide Depression Anger".split()
-		for cName in basicCrises:
-			self.addCrisisLabel(cName)
 		self.labeler.ui.crisisFrame.deleteLater() #was placeholder 
-
 		self.labeler.show()
+		self.autoSaver.start()
+
+	def startAutoSave(self):
+		if self.model is not None:
+			self.model.save()
+			self.autoSaver = Timer(10, self.startAutoSave)
+			self.autoSaver.start()
 
 
 	def setupJournalLabeling(self):
@@ -48,39 +60,51 @@ class Controller:
 		# journalDisplay.setText(self.model.currentText())
 		pass
 
+	def updateJournalAndLabels(self):
+		# JOURNAL TEXT
+		jText = self.model.getCurrentText()
+		self.labeler.ui.journalEntryText.setText(jText)
+		num = self.model.taskNum
+		total = self.model.taskTotal
+		newText = "Journal Label Task %s/%s" % (num, total)
+		self.labeler.ui.taskNumberLabel.setText(newText)
+		#CRISIS LABELS
+		parent = self.labeler.ui.crisisGroupBox
+		parentLayout = self.labeler.ui.crisisGroupBoxLayout
+		for child in parent.children():
+			if isinstance(child, QtWidgets.QFrame):
+				child.deleteLater()
+		print("Labels:", self.model.currentMark.labels)
+		for cName, checked in self.model.currentMark.labels.items():
+			self.addCrisisLabel(cName, checked)
+
 
 	def setupJournalNav(self):
-		def updateJournal():
-			journalDisplay = self.labeler.ui.journalEntryText
-			journalDisplay.setText(self.model.currentText())
-			taskLabel = self.labeler.ui.taskNumberLabel
-			args = dict(num=self.model.taskNum, total=self.model.taskTotal)
-			newText = "Journal Task {num}/{total}".format(**args)
-			taskLabel.setText(newText)
 		def goNext():
 			self.model.nextJ()
-			updateJournal()
+			self.updateJournalAndLabels()
 		def goBack():
 			self.model.prevJ()
-			updateJournal()
-		updateJournal()
+			self.updateJournalAndLabels()
 		self.labeler.ui.backButton.clicked.connect(goBack)
 		self.labeler.ui.forwardButton.clicked.connect(goNext)
 
-	def addCrisisLabel(self, cName):
+
+	def addCrisisLabel(self, cName, checked=False):
 		parent = self.labeler.ui.crisisGroupBox
 		parentLayout = self.labeler.ui.crisisGroupBoxLayout
 		cFrame = QtWidgets.QFrame(parent)
+		self.model.currentMark.newLabel(cName, checked)
 
 		def doCheck():
-			# TODO: add crisis checked functionality
-			throw("Crisis checked!!!!!!")
-			pass
+			self.model.currentMark.toggleLabel(cName)
 
 		def doDelete():
+			self.model.currentMark.delLabel(cName)
 			cFrame.deleteLater()
 			self.delConfirm.close()
 		def confirmDelete():
+			return doDelete() # NOTE may change if confirmation needed!
 			self.delConfirm = toWidget(Ui_DelCrisisDialog())
 			self.delConfirm.ui.buttonBox.accepted.connect(doDelete)
 			self.delConfirm.ui.buttonBox.rejected.connect(self.delConfirm.close)
@@ -93,6 +117,7 @@ class Controller:
 		crisisCB = QtWidgets.QCheckBox(cFrame)
 		crisisCB.setObjectName("crisisCB_"+cName)
 		crisisCB.setText(cName)
+		crisisCB.setChecked(checked)
 		crisisCB.clicked.connect(doCheck)
 		hLayout.addWidget(crisisCB)
 		delCrisisButton = QtWidgets.QToolButton(cFrame)
@@ -114,15 +139,14 @@ class Controller:
 			if (newCrisis is not ""):
 				newCrisisLine.setText("")
 				self.addCrisisLabel(newCrisis)
-		addButton = labelerUI.addCustomButton.clicked.connect(addNewCrisis)
-
+		labelerUI.addCustomButton.clicked.connect(addNewCrisis)
+		newCrisisLine.returnPressed.connect(addNewCrisis)
 
 	def connectIntroToTask(self):
 		def switchWindows():
 			groupNum = self.intro.ui.groupNumSpinBox.value()
-			self.model = CrisisModel(groupNum)
 			self.intro.hide()
-			self.showLabelTask()
+			self.showLabelTask(groupNum)
 		acceptCheck = self.intro.ui.AcceptCheckBox
 		continueButton = self.intro.ui.ContinueButton
 		acceptCheck.clicked.connect(continueButton.setEnabled)

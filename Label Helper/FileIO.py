@@ -1,18 +1,32 @@
 import os
 
-journalsFilepath = ".\\Journals"
+journalsFilepath = os.path.join(".", "Journals")
+resultsFilespath = os.path.join(".", "LabelResults")
 
-def getJFileInfo(jNum):
+
+def writeJournalGroup(groupNum, contents):
+	fName = "Group%sLabels.json" % (groupNum)
+	fPath = os.path.join(resultsFilespath, fName)
+	writeFile(fPath, contents)
+
+def readJournalGroup(groupNum):
+	fName = "Group%sLabels.json" % (groupNum)
+	fPath = os.path.join(resultsFilespath, fName)
+	if os.path.isfile(fPath):
+		return readFile(fPath)
+	return None
+
+def readJTextForJNum(jNum):
 	fileStart = "Entry" + str(jNum).zfill(3)
 	for fPath, fName in walkJournalsGen():
 		if fName.startswith(fileStart):
-			return fPath, fName
+			return readFile(fPath)
 	throw("can't find journal starting with: "+fileStart)
+
 
 
 def walkJournalsGen():
 	walkPath = os.path.join(journalsFilepath)
-	# log.info("Walking Journals on path: %s", walkPath)
 	for root, dirs, files in os.walk(walkPath):
 		for fName in files:
 			if not fName.startswith("Entry"):
@@ -25,16 +39,14 @@ def walkJournalsGen():
 
 def readFile(filepath):
 	fileText = None
-	# log.info("Reading File: %s", filepath)
 	with open(filepath, 'r', encoding="UTF-8") as file:
 		fileText = file.read()
 	return fileText
 
 
 def writeFile(filepath, content):
-	# log.info("Writing File: %s", filepath)
-	print("Output file:", filepath)
-	dirPath, fileName = os.path.split(filepath)
+	print("Writing file:", filepath)
+	dirPath, fName = os.path.split(filepath)
 	os.makedirs(dirPath, exist_ok=True)
 	with open(filepath, 'w', encoding="UTF-8") as file:
 		file.write(content)

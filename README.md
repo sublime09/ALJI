@@ -35,7 +35,8 @@ For enabling experts to label journal texts for language that signals a mental h
 - [PyQt5](https://www.riverbankcomputing.com/software/pyqt/) to design the GUI. ([GPLv3 license](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license))
 - [PyInstaller](http://www.pyinstaller.org/) to build a single executable. ([GPLv2 license](https://raw.githubusercontent.com/pyinstaller/pyinstaller/develop/COPYING.txt))
 - (Optional) [Make](https://www.gnu.org/software/make/) for quicker development process. 
-	- See `Makefile` for valid commands. Also see: [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) and [MinGW](http://mingw.org/)
+	- See `LabelHelper\Makefile` for valid commands. Also see: [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) and [MinGW](http://mingw.org/)
+- (Optional) [UPX](https://upx.github.io/) for tighter executable packing ([GPLv2](https://upx.github.io/upx-license.html)). Add to PATH to let pyinstaller find it automatically (or in venv/Scripts). 
 
 
 ### Soon: ALJI Trainer:

@@ -1,7 +1,5 @@
 import FileIO 
-from dataclasses import dataclass, field
 import json
-from typing import NamedTuple
 
 defaultCrises = "Depression Self-Harm Grief".split()
 
@@ -45,11 +43,6 @@ class MarkedJournal:
 	def toJSON(self, indent=None):
 		return json.dumps(self.__dict__, indent=indent)
 
-	def __eq__(self, other):
-		if not self.__class__ == other.__class__:
-			return False
-		return self.jText == other.jText
-
 	def __repr__(self):
 		qName = self.__class__.__qualname__
 		reprDict = {k:d for k,d in self.__dict__.items() if k != "jText"}
@@ -65,4 +58,3 @@ if __name__ == '__main__':
 	print(jsonObj)
 	oj = MarkedJournal.fromJSON(jsonStr)
 	print(oj)
-	# assert oj == mj

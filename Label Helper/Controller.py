@@ -72,7 +72,7 @@ class Controller:
 		for child in parent.children():
 			if isinstance(child, QtWidgets.QFrame):
 				child.deleteLater()
-		print("Labels:", self.model.currentMark.labels)
+		print("currentMark=", self.model.currentMark)
 		for cName, checked in self.model.currentMark.labels.items():
 			self.addCrisisLabel(cName, checked)
 

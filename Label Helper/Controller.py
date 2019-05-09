@@ -5,7 +5,6 @@ from JournalGroup import JournalGroup
 from PyQt5 import QtWidgets, QtGui, QtCore
 from IntroWidget import Ui_IntroWidget
 from LabelingWidget import Ui_LabelingWidget
-from DelCrisisDialog import Ui_DelCrisisDialog
 
 
 
@@ -22,7 +21,6 @@ class Controller:
 		# setup widgets and their uis
 		self.intro = toWidget(Ui_IntroWidget())
 		self.labeler = toWidget(Ui_LabelingWidget())
-		self.delConfirm = toWidget(Ui_DelCrisisDialog())
 		self.model = None 
 		self.autoSaver = Timer(10, self.startAutoSave)
 
@@ -98,17 +96,11 @@ class Controller:
 
 		def doCheck():
 			self.model.currentMark.toggleLabel(cName)
-
 		def doDelete():
 			self.model.currentMark.delLabel(cName)
 			cFrame.deleteLater()
-			self.delConfirm.close()
 		def confirmDelete():
 			return doDelete() # NOTE may change if confirmation needed!
-			self.delConfirm = toWidget(Ui_DelCrisisDialog())
-			self.delConfirm.ui.buttonBox.accepted.connect(doDelete)
-			self.delConfirm.ui.buttonBox.rejected.connect(self.delConfirm.close)
-			self.delConfirm.show()
 
 		cFrame.setFrameShape(QtWidgets.QFrame.Box)
 		cFrame.setObjectName("crisisFrame_"+cName)

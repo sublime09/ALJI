@@ -1,4 +1,4 @@
-objects = IntroWidget.py LabelingWidget.py DelCrisisDialog.py
+objects = IntroWidget.py LabelingWidget.py 
 scripts = ../env/Scripts
 
 all: $(objects)

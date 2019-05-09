@@ -5,6 +5,8 @@ pyqt5-tools >= 5.11.3.1.4
 # pyqt5-tools requires specific version of pyqt5
 # pyqt5 >= 5.11.3
 
+PyInstaller >= 3.4
+
 ### MAYBE?
 ### cutie >= 0.2.2
 

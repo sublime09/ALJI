@@ -6,6 +6,9 @@ all: $(objects)
 run: all
 	python Controller.py
 
+dist: all
+	pyinstaller --onefile --windowed Controller.py
+
 %.py: %.ui
 	$(scripts)/pyuic5.exe $^ -o $@
 

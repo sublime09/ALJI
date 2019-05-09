@@ -9,7 +9,7 @@ all: $(objects)
 %.py: %.ui
 	$(scripts)/pyuic5.exe $^ -o $@
 
-dist: all testupx
+dist: all testUPX
 	pyinstaller --windowed --onefile Controller.py --name ALJILabelHelper
 	cp --recursive --force Journals dist/
 	cp --recursive --force images dist/

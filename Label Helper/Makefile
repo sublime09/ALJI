@@ -14,7 +14,7 @@ dist: all testupx
 	cp --recursive --force Journals dist/
 	cp --recursive --force images dist/
 
-testupx:
+testUPX:
 	@echo "Testing for UPX..."
 	@hash upx 2>/dev/null || { echo "WARNING: Missing UPX! Bloated .exe file should be expected";}
 

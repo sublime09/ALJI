@@ -30,6 +30,7 @@ class MarkedJournal:
 	@staticmethod
 	def fromJNum(jNum):
 		text = FileIO.readJTextForJNum(jNum)
+		text = text.replace('\t', "   ").replace("    ", "  ")
 		return MarkedJournal(jNum, text)
 
 	def newLabel(self, name, checked=False):

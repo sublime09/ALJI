@@ -3,6 +3,7 @@ secret*
 *.log
 Scholastic Pull/Essays/*
 Label Helper/Journals/*
+Label Helper/LabelResults/*
 
 
 # Sublime workspace

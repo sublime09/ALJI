@@ -1,7 +1,25 @@
 import FileIO 
 import json
 
-defaultCrises = "Depression Self-Harm Grief".split()
+defaults = '''
+Consistent despressed mood
+Loss of interest/pleasure
+Change in weight/appetite
+Insomnia / Hypersomnia
+Psychomotor agitation/retardation
+Fatigue
+Feelings of worthlessness/guilt
+Dimished concentration/solving ability
+Recurrent thoughts of death
+Stressful traumatic event
+Intrusive memories of past trauma
+Avoidance of stimuli associated with trauma
+Negative alterations in cognition/mood
+
+Excessive Anxiety and worry over 6 months
+'''
+defaults = defaults.split('\n')
+defaults = [d for d in defaults if d.strip() != ""]
 
 # @dataclass
 # class Label:
@@ -14,12 +32,13 @@ defaultCrises = "Depression Self-Harm Grief".split()
 
 # @dataclass
 class MarkedJournal:
-	def __init__(self, jNum: int, jText: str, labels=None):
+	def __init__(self, jNum: int, jText: str, cgi: int=0, labels=None):
 		self.jNum = jNum
 		self.jText = jText
 		if labels is None:
-			labels = {n:False for n in defaultCrises}
+			labels = {n:False for n in defaults}
 		self.labels = labels
+		self.cgi = cgi
 
 	@staticmethod
 	def fromJSON(jsonObj):

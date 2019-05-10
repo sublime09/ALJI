@@ -76,7 +76,7 @@ class JournalGroup():
 		return json.dumps(self, indent=indent, default=d)
 
 	def save(self):
-		jsonStr = self.toJSON()
+		jsonStr = self.toJSON(indent=2)
 		FileIO.writeJournalGroup(self.groupNum, jsonStr)
 
 	def __str__(self):
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 	print("Using:", repr(c))
 	print("Snippet: ", c.getCurrentText()[:60])
 	c.currentMark.newLabel("dispair")
-	jsonStr = c.toJSON(indent=None)
+	jsonStr = c.toJSON()
 	# print("\nJSON Printed:", jsonStr[:100])
 	c.save()
 	d = JournalGroup.fromJSON(jsonStr)

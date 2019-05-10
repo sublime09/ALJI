@@ -11,13 +11,14 @@ Fatigue
 Feelings of worthlessness/guilt
 Dimished concentration/solving ability
 Recurrent thoughts of death
-Stressful traumatic event
-Intrusive memories of past trauma
-Avoidance of stimuli associated with trauma
-Negative alterations in cognition/mood
-
-Excessive Anxiety and worry over 6 months
 '''
+# Stressful traumatic event
+# Intrusive memories of past trauma
+# Avoidance of stimuli associated with trauma
+# Negative alterations in cognition/mood
+# Excessive Anxiety and worry over 6 months
+
+
 defaults = defaults.split('\n')
 defaults = [d for d in defaults if d.strip() != ""]
 

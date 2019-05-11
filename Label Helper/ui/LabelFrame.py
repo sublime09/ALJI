@@ -17,6 +17,9 @@ class LabelFrame(QtWidgets.QFrame):
 		self.layout.addWidget(self.checkBox)
 		self.layout.addWidget(self.deleteButton)
 
+	def sizeHint(self):
+		return self.checkBox.sizeHint() + self.deleteButton.sizeHint()
+
 	def setState(self, name: str, checked: bool):
 		self.checkBox.setText(name)
 		self.checkBox.setChecked(checked)

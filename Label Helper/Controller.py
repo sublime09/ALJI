@@ -57,8 +57,7 @@ class Controller:
 		ui.taskNumberLabel.setText(newText)
 		print("Viewing Group{} Task{}".format(m.groupNum, m.taskNum))
 		# JOURNAL TEXT
-		jText = m.getCurrentText()
-		ui.journalEntryText.setText(jText)
+		ui.journalEntryText.setText(m.getCurrentText())
 		#CRISIS LABELS
 		for child in ui.labelScrollAreaWidgetContents.children():
 			if not isinstance(child, QtWidgets.QVBoxLayout):
@@ -105,6 +104,7 @@ class Controller:
 			if (newCrisis is not ""):
 				newCrisisLine.setText("")
 				self.addCrisisLabel(newCrisis)
+				self.model.currentMark.newLabel(newCrisis)
 		labelerUI.addCustomButton.clicked.connect(addNewCrisis)
 		newCrisisLine.returnPressed.connect(addNewCrisis)
 

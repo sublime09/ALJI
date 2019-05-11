@@ -81,7 +81,7 @@ p, li { white-space: pre-wrap; }
             <string>Back</string>
            </property>
            <property name="icon">
-            <iconset resource="images/icons.qrc">
+            <iconset resource="ui/images/icons.qrc">
              <normaloff>:/icon/chevron-left.svg</normaloff>:/icon/chevron-left.svg</iconset>
            </property>
            <property name="iconSize">
@@ -123,7 +123,7 @@ p, li { white-space: pre-wrap; }
             <string>Forward</string>
            </property>
            <property name="icon">
-            <iconset resource="images/icons.qrc">
+            <iconset resource="ui/images/icons.qrc">
              <normaloff>:/icon/chevron-right.svg</normaloff>:/icon/chevron-right.svg</iconset>
            </property>
            <property name="iconSize">
@@ -264,7 +264,7 @@ p, li { white-space: pre-wrap; }
                 <string>Delete</string>
                </property>
                <property name="icon">
-                <iconset resource="images/icons.qrc">
+                <iconset resource="ui/images/icons.qrc">
                  <normaloff>:/icon/times.svg</normaloff>:/icon/times.svg</iconset>
                </property>
                <property name="iconSize">
@@ -324,7 +324,7 @@ p, li { white-space: pre-wrap; }
                 <string>Delete</string>
                </property>
                <property name="icon">
-                <iconset resource="images/icons.qrc">
+                <iconset resource="ui/images/icons.qrc">
                  <normaloff>:/icon/times.svg</normaloff>:/icon/times.svg</iconset>
                </property>
                <property name="iconSize">
@@ -376,7 +376,7 @@ p, li { white-space: pre-wrap; }
             <string>Add</string>
            </property>
            <property name="icon">
-            <iconset resource="images/icons.qrc">
+            <iconset resource="ui/images/icons.qrc">
              <normaloff>:/icon/plus.svg</normaloff>:/icon/plus.svg</iconset>
            </property>
            <property name="iconSize">
@@ -473,7 +473,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>pointSizeSpinBox</tabstop>
  </tabstops>
  <resources>
-  <include location="images/icons.qrc"/>
+  <include location="ui/images/icons.qrc"/>
  </resources>
  <connections>
   <connection>

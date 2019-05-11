@@ -1,7 +1,7 @@
 import os
 import json
-import FileIO
-from MarkedJournal import MarkedJournal
+from . import FileIO
+from .MarkedJournal import MarkedJournal
 
 mostNegEmo = '''437 341 068 278 510 041 366 472 238 188 
 270 309 294 408 357 426 381 299 156 010 522 473 345 

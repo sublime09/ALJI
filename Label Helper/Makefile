@@ -1,4 +1,5 @@
-objects = IntroWidget.py LabelingWidget.py 
+uis = ui/IntroWidget.py ui/LabelingWidget.py
+uiRes = ui/images/icons_rc.py
 scripts = ../env/Scripts
 outName = ALJILabelHelper
 oneExe = dist/$(outName).exe
@@ -11,10 +12,24 @@ run: all
 distRun: dist
 	$(manyExe)
 
-all: $(objects)
+all: $(uis) $(uiRes)
 
 %.py: %.ui
-	$(scripts)/pyuic5.exe $^ -o $@
+	$(scripts)/pyuic5.exe $^ -o $@ --import-from .images
+
+%_rc.py: %.qrc
+	$(scripts)/pyrcc5.exe $^ -o $@
+
+
+# ui/images/icons_rc.py: ui/images/icons.qrc
+# 	$(scripts)/pyrcc5.exe $^ -o $@
+
+# rc: ui/images/icons_rc.py
+
+# %_rc.py: %.qrc
+# 	$(scripts)/pyrcc5.exe $^ -o $@
+
+# uiResources: ui/uiResources.py
 
 $(oneExe): all
 	pyinstaller --windowed --onefile Controller.py --name $(outName) $(upx)
@@ -27,7 +42,7 @@ dist: $(manyExe) distResources
 
 distResources:
 	cp --recursive --force Journals dist/
-	cp --recursive --force images dist/
+	cp --recursive --force ui/images dist/
 
 dev: all
 	start ../devProject.sublime-project -WindowStyle Hidden
@@ -36,7 +51,8 @@ designer:
 	$(scripts)/designer.exe &
 
 clean:
-	rm -f $(objects) &
+	rm -f $(uis) &
+	rm -f $(uiRes) &
 	rm -f Controller.spec &
 	rm -rf __pycache__ &
 	rm -rf build/ &

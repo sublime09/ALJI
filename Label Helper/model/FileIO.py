@@ -1,8 +1,9 @@
 import os
 
-journalsFilepath = os.path.join(".", "Journals")
-resultsFilespath = os.path.join(".", "LabelResults")
-
+dirname = os.path.dirname(__file__)
+journalsFilepath = os.path.join(dirname, "..", "Journals")
+resultsFilespath = os.path.join(dirname, "..", "LabelResults")
+dateStr = " 2019-02-04"
 
 def writeJournalGroup(groupNum, contents):
 	fName = "Group%sLabels.json" % (groupNum)
@@ -17,13 +18,10 @@ def readJournalGroup(groupNum):
 	return None
 
 def readJTextForJNum(jNum):
-	fileStart = "Entry" + str(jNum).zfill(3)
-	for fPath, fName in walkJournalsGen():
-		if fName.startswith(fileStart):
-			return readFile(fPath)
-	throw("can't find journal starting with: "+fileStart)
-
-
+	entryStr = "Entry" + str(jNum).zfill(3)
+	fName = entryStr + dateStr + ".txt"
+	fPath = os.path.join(journalsFilepath, fName)
+	return readFile(fPath)
 
 def walkJournalsGen():
 	walkPath = os.path.join(journalsFilepath)

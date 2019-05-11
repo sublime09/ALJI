@@ -1,11 +1,11 @@
 import sys
 from threading import Timer
-from JournalGroup import JournalGroup
+from model.JournalGroup import JournalGroup
 
 from PyQt5 import QtWidgets, QtGui, QtCore
-from IntroWidget import Ui_IntroWidget
-from LabelingWidget import Ui_LabelingWidget
-
+from ui.IntroWidget import Ui_IntroWidget
+from ui.LabelingWidget import Ui_LabelingWidget
+from ui.LabelFrame import LabelFrame
 
 
 def toWidget(wigObject):
@@ -21,6 +21,7 @@ class Controller:
 		# setup widgets and their uis
 		self.intro = toWidget(Ui_IntroWidget())
 		self.labeler = toWidget(Ui_LabelingWidget())
+
 		self.model = None 
 		self.autoSaver = Timer(10, self.startAutoSave)
 
@@ -76,7 +77,6 @@ class Controller:
 		for cName, checked in self.model.currentMark.labels.items():
 			self.addCrisisLabel(cName, checked)
 
-
 	def setupJournalNav(self):
 		def goNext():
 			self.model.nextJ()
@@ -87,8 +87,24 @@ class Controller:
 		self.labeler.ui.backButton.clicked.connect(goBack)
 		self.labeler.ui.forwardButton.clicked.connect(goNext)
 
-
 	def addCrisisLabel(self, cName, checked=False):
+		parent = self.labeler.ui.crisisGroupBox
+		parentLayout = self.labeler.ui.crisisGroupBoxLayout
+		# parent = self.labeler.ui.labelScrollArea
+		# parentLayout = self.labeler.ui.labelScrollAreaWidgetContents
+		lFrame = LabelFrame(parent)
+		def doCheck():
+			self.model.currentMark.toggleLabel(cName)
+		def doDelete():
+			self.model.currentMark.delLabel(cName)
+			lFrame.deleteLater()
+
+		lFrame.setActions(doCheck, doDelete)
+		lFrame.setState(cName, checked)
+		parentLayout.addWidget(lFrame)
+		
+
+	def addCrisisLabelOLD(self, cName, checked=False):
 		parent = self.labeler.ui.crisisGroupBox
 		parentLayout = self.labeler.ui.crisisGroupBoxLayout
 		cFrame = QtWidgets.QFrame(parent)
@@ -114,7 +130,7 @@ class Controller:
 		hLayout.addWidget(crisisCB)
 		delCrisisButton = QtWidgets.QToolButton(cFrame)
 		delIcon = QtGui.QIcon()
-		delIcon.addPixmap(QtGui.QPixmap("images/times.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		delIcon.addPixmap(QtGui.QPixmap("ui/images/times.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		delCrisisButton.setIcon(delIcon)
 		delCrisisButton.setIconSize(QtCore.QSize(20, 20))
 		delCrisisButton.setObjectName("deleteCrisis_"+cName)

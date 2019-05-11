@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>chevron-left.svg</file>
+    <file>chevron-right.svg</file>
+    <file>plus.svg</file>
+    <file>times.svg</file>
+  </qresource>
+</RCC>

@@ -2,18 +2,10 @@
 <ui version="4.0">
  <class>LabelingWidget</class>
  <widget class="QWidget" name="LabelingWidget">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1047</width>
-    <height>715</height>
-   </rect>
-  </property>
-  <property name="minimumSize">
+  <property name="baseSize">
    <size>
-    <width>702</width>
-    <height>373</height>
+    <width>1080</width>
+    <height>960</height>
    </size>
   </property>
   <property name="font">
@@ -89,8 +81,8 @@ p, li { white-space: pre-wrap; }
             <string>Back</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/chevron-left.svg</normaloff>images/chevron-left.svg</iconset>
+            <iconset resource="images/icons.qrc">
+             <normaloff>:/icon/chevron-left.svg</normaloff>:/icon/chevron-left.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -131,8 +123,8 @@ p, li { white-space: pre-wrap; }
             <string>Forward</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/chevron-right.svg</normaloff>images/chevron-right.svg</iconset>
+            <iconset resource="images/icons.qrc">
+             <normaloff>:/icon/chevron-right.svg</normaloff>:/icon/chevron-right.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -202,159 +194,89 @@ p, li { white-space: pre-wrap; }
           <number>0</number>
          </property>
          <item>
-          <widget class="QScrollArea" name="scrollArea">
+          <widget class="QFrame" name="crisisFrame">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Sunken</enum>
+           </property>
+           <layout class="QHBoxLayout" name="hl3">
+            <property name="topMargin">
+             <number>2</number>
+            </property>
+            <property name="bottomMargin">
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="crisisCB">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Crisis1</string>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="deleteCrisis">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Delete</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images/icons.qrc">
+                <normaloff>:/icon/times.svg</normaloff>:/icon/times.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="labelScrollArea">
            <property name="horizontalScrollBarPolicy">
             <enum>Qt::ScrollBarAlwaysOff</enum>
-           </property>
-           <property name="sizeAdjustPolicy">
-            <enum>QAbstractScrollArea::AdjustIgnored</enum>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
            </property>
-           <widget class="QWidget" name="scrollAreaWidgetContents">
+           <widget class="QWidget" name="labelScrollAreaWidgetContents">
             <property name="geometry">
              <rect>
               <x>0</x>
               <y>0</y>
               <width>231</width>
-              <height>190</height>
+              <height>209</height>
              </rect>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout">
-             <item>
-              <widget class="QFrame" name="crisisFrame">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::Box</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Sunken</enum>
-               </property>
-               <layout class="QHBoxLayout" name="hl3">
-                <property name="topMargin">
-                 <number>2</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="QCheckBox" name="crisisCB">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Crisis1</string>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="deleteCrisis">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Delete</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>images/times.svg</normaloff>images/times.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="crisisFrame_2">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::Box</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Sunken</enum>
-               </property>
-               <layout class="QHBoxLayout" name="hl3_2">
-                <property name="topMargin">
-                 <number>2</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="QCheckBox" name="crisisCB_2">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Crisis1</string>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="deleteCrisis_2">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="text">
-                   <string>Delete</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>images/times.svg</normaloff>images/times.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout"/>
            </widget>
           </widget>
          </item>
@@ -398,8 +320,8 @@ p, li { white-space: pre-wrap; }
             <string>Add</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/plus.svg</normaloff>images/plus.svg</iconset>
+            <iconset resource="images/icons.qrc">
+             <normaloff>:/icon/plus.svg</normaloff>:/icon/plus.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -494,7 +416,9 @@ p, li { white-space: pre-wrap; }
   <tabstop>fontComboBox</tabstop>
   <tabstop>pointSizeSpinBox</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images/icons.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>deleteCrisis</sender>
@@ -503,12 +427,12 @@ p, li { white-space: pre-wrap; }
    <slot>deleteLater()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>791</x>
-     <y>118</y>
+     <x>911</x>
+     <y>223</y>
     </hint>
     <hint type="destinationlabel">
-     <x>801</x>
-     <y>127</y>
+     <x>922</x>
+     <y>227</y>
     </hint>
    </hints>
   </connection>
@@ -519,12 +443,12 @@ p, li { white-space: pre-wrap; }
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>783</x>
-     <y>180</y>
+     <x>1008</x>
+     <y>395</y>
     </hint>
     <hint type="destinationlabel">
-     <x>720</x>
-     <y>69</y>
+     <x>1028</x>
+     <y>190</y>
     </hint>
    </hints>
   </connection>

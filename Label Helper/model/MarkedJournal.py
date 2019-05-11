@@ -1,4 +1,4 @@
-import FileIO 
+from . import FileIO 
 import json
 
 defaults = '''

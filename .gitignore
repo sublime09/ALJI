@@ -4,6 +4,7 @@ secret*
 Scholastic Pull/Essays/*
 Label Helper/Journals/*
 Label Helper/LabelResults/*
+Label Helper/ui/*.py
 
 
 # Sublime workspace

@@ -21,11 +21,10 @@ class Controller:
 		# setup widgets and their uis
 		self.intro = toWidget(Ui_IntroWidget())
 		self.labeler = toWidget(Ui_LabelingWidget())
-
 		self.model = None 
 		self.autoSaver = Timer(10, self.startAutoSave)
-
-		self.showIntro() # show first window...
+		self.connectIntroToTask()
+		self.intro.show()
 
 		result = self.app.exec_()
 		if self.model is not None:
@@ -33,18 +32,15 @@ class Controller:
 		self.autoSaver.cancel()
 		sys.exit(result)
 
-	def showIntro(self):
-		self.connectIntroToTask()
-		self.intro.show()
-
 	def showLabelTask(self, groupNum):
 		self.model = JournalGroup(groupNum)
 		self.setupJournalNav()
-		self.updateJournalAndLabels()
 		self.setupFontChanges()
 		self.addCustomCrisisFuncs()
-		self.labeler.ui.crisisFrame.deleteLater() #was placeholder 
-		self.labeler.show()
+		self.updateView()
+		# self.setupJournalLabeling() # TOOO HARD
+		# self.labeler.ui.crisisFrame.deleteLater() #was placeholder 
+		self.labeler.showMaximized()
 		self.autoSaver.start()
 
 	def startAutoSave(self):
@@ -53,90 +49,52 @@ class Controller:
 			self.autoSaver = Timer(10, self.startAutoSave)
 			self.autoSaver.start()
 
-
-	def setupJournalLabeling(self):
-		# journalDisplay = self.labeler.ui.journalEntryText
-		# journalDisplay.setText(self.model.currentText())
-		pass
-
-	def updateJournalAndLabels(self):
+	def updateView(self):
+		m = self.model
+		ui = self.labeler.ui
+		# NAV LABEL
+		newText = "Journal Label Task %s/%s" % (m.taskNum, m.taskTotal)
+		ui.taskNumberLabel.setText(newText)
+		print("Viewing Group{} Task{}".format(m.groupNum, m.taskNum))
 		# JOURNAL TEXT
-		jText = self.model.getCurrentText()
-		self.labeler.ui.journalEntryText.setText(jText)
-		num = self.model.taskNum
-		total = self.model.taskTotal
-		newText = "Journal Label Task %s/%s" % (num, total)
-		self.labeler.ui.taskNumberLabel.setText(newText)
+		jText = m.getCurrentText()
+		ui.journalEntryText.setText(jText)
 		#CRISIS LABELS
-		parent = self.labeler.ui.crisisGroupBox
-		parentLayout = self.labeler.ui.crisisGroupBoxLayout
-		for child in parent.children():
-			if isinstance(child, QtWidgets.QFrame):
+		for child in ui.labelScrollAreaWidgetContents.children():
+			if not isinstance(child, QtWidgets.QVBoxLayout):
 				child.deleteLater()
-		print("currentMark=", self.model.currentMark)
-		for cName, checked in self.model.currentMark.labels.items():
+		for cName, checked in m.currentMark.labels.items():
 			self.addCrisisLabel(cName, checked)
+
+		# CGI
+		cgiVal = m.currentMark.cgi
+		ui.cgiSpinBox.setValue(cgiVal)
+		def cgiChanged():
+			newVal = ui.cgiSpinBox.value()
+			m.currentMark.setCGI(newVal)
+		ui.cgiSpinBox.valueChanged.connect(cgiChanged)
+
 
 	def setupJournalNav(self):
 		def goNext():
 			self.model.nextJ()
-			self.updateJournalAndLabels()
+			self.updateView()
 		def goBack():
 			self.model.prevJ()
-			self.updateJournalAndLabels()
+			self.updateView()
 		self.labeler.ui.backButton.clicked.connect(goBack)
 		self.labeler.ui.forwardButton.clicked.connect(goNext)
 
 	def addCrisisLabel(self, cName, checked=False):
-		parent = self.labeler.ui.crisisGroupBox
-		parentLayout = self.labeler.ui.crisisGroupBoxLayout
-		# parent = self.labeler.ui.labelScrollArea
-		# parentLayout = self.labeler.ui.labelScrollAreaWidgetContents
-		lFrame = LabelFrame(parent)
 		def doCheck():
 			self.model.currentMark.toggleLabel(cName)
 		def doDelete():
 			self.model.currentMark.delLabel(cName)
 			lFrame.deleteLater()
-
-		lFrame.setActions(doCheck, doDelete)
+		lFrame = LabelFrame()
 		lFrame.setState(cName, checked)
-		parentLayout.addWidget(lFrame)
-		
-
-	def addCrisisLabelOLD(self, cName, checked=False):
-		parent = self.labeler.ui.crisisGroupBox
-		parentLayout = self.labeler.ui.crisisGroupBoxLayout
-		cFrame = QtWidgets.QFrame(parent)
-		self.model.currentMark.newLabel(cName, checked)
-
-		def doCheck():
-			self.model.currentMark.toggleLabel(cName)
-		def doDelete():
-			self.model.currentMark.delLabel(cName)
-			cFrame.deleteLater()
-		def confirmDelete():
-			return doDelete() # NOTE may change if confirmation needed!
-
-		cFrame.setFrameShape(QtWidgets.QFrame.Box)
-		cFrame.setObjectName("crisisFrame_"+cName)
-		hLayout = QtWidgets.QHBoxLayout(cFrame)
-		hLayout.setObjectName("hLayout_"+cName)
-		crisisCB = QtWidgets.QCheckBox(cFrame)
-		crisisCB.setObjectName("crisisCB_"+cName)
-		crisisCB.setText(cName)
-		crisisCB.setChecked(checked)
-		crisisCB.clicked.connect(doCheck)
-		hLayout.addWidget(crisisCB)
-		delCrisisButton = QtWidgets.QToolButton(cFrame)
-		delIcon = QtGui.QIcon()
-		delIcon.addPixmap(QtGui.QPixmap("ui/images/times.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		delCrisisButton.setIcon(delIcon)
-		delCrisisButton.setIconSize(QtCore.QSize(20, 20))
-		delCrisisButton.setObjectName("deleteCrisis_"+cName)
-		delCrisisButton.clicked.connect(confirmDelete)
-		hLayout.addWidget(delCrisisButton)
-		parentLayout.addWidget(cFrame)
+		lFrame.setActions(doCheck, doDelete)
+		self.labeler.ui.labelScrollAreaLayout.addWidget(lFrame)
 
 	def addCustomCrisisFuncs(self):
 		labelerUI = self.labeler.ui

@@ -52,6 +52,9 @@ class MarkedJournal:
 	def delLabel(self, name):
 		del self.labels[name]
 
+	def setCGI(self, newVal):
+		self.cgi = newVal
+
 	def toJSON(self, indent=None):
 		return json.dumps(self.__dict__, indent=indent)
 

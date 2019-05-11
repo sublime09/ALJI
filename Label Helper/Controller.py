@@ -7,6 +7,8 @@ from ui.IntroWidget import Ui_IntroWidget
 from ui.LabelingWidget import Ui_LabelingWidget
 from ui.LabelFrame import LabelFrame
 
+import logging as log
+log.basicConfig(filename='ALJI.log', filemode='w', level=log.CRITICAL)
 
 def toWidget(wigObject):
 	wig = QtWidgets.QWidget()
@@ -24,6 +26,7 @@ class Controller:
 		self.model = None 
 		self.autoSaver = Timer(10, self.startAutoSave)
 		self.connectIntroToTask()
+		log.warning("intro.show()")
 		self.intro.show()
 
 		result = self.app.exec_()
@@ -33,13 +36,13 @@ class Controller:
 		sys.exit(result)
 
 	def showLabelTask(self, groupNum):
+		log.warning("showLabelTask")
 		self.model = JournalGroup(groupNum)
 		self.setupJournalNav()
 		self.setupFontChanges()
 		self.addCustomCrisisFuncs()
 		self.updateView()
 		# self.setupJournalLabeling() # TOOO HARD
-		# self.labeler.ui.crisisFrame.deleteLater() #was placeholder 
 		self.labeler.showMaximized()
 		self.autoSaver.start()
 
@@ -50,6 +53,7 @@ class Controller:
 			self.autoSaver.start()
 
 	def updateView(self):
+		log.warning("updateView")
 		m = self.model
 		ui = self.labeler.ui
 		# NAV LABEL
@@ -85,6 +89,7 @@ class Controller:
 		self.labeler.ui.forwardButton.clicked.connect(goNext)
 
 	def addCrisisLabel(self, cName, checked=False):
+		log.info("addCrisisLabel")
 		def doCheck():
 			self.model.currentMark.toggleLabel(cName)
 		def doDelete():

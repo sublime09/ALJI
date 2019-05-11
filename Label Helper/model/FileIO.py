@@ -1,8 +1,7 @@
 import os
 
-dirname = os.path.dirname(__file__)
-journalsFilepath = os.path.join(dirname, "..", "Journals")
-resultsFilespath = os.path.join(dirname, "..", "LabelResults")
+journalsFilepath = os.path.join("..", "Journals")
+resultsFilespath = os.path.join("..", "LabelResults")
 dateStr = " 2019-02-04"
 
 def writeJournalGroup(groupNum, contents):

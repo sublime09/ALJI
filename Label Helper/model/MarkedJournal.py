@@ -9,29 +9,20 @@ Insomnia / Hypersomnia
 Psychomotor agitation/retardation
 Fatigue
 Feelings of worthlessness/guilt
-Dimished concentration/solving ability
+Diminished concentration/solving ability
 Recurrent thoughts of death
+Stressful traumatic event
+Intrusive memories of past trauma
+Avoidance of stimuli associated with trauma
+Negative alterations in cognition/mood
+Excessive Anxiety and worry over 6 months
+'''   
 '''
-# Stressful traumatic event
-# Intrusive memories of past trauma
-# Avoidance of stimuli associated with trauma
-# Negative alterations in cognition/mood
-# Excessive Anxiety and worry over 6 months
-
+'''
 
 defaults = defaults.split('\n')
 defaults = [d for d in defaults if d.strip() != ""]
 
-# @dataclass
-# class Label:
-# 	name: str 
-# 	# text: str = "" # may add later
-# 	checked: bool = False
-
-# 	def toggle(self):
-# 		self.checked = not self.checked
-
-# @dataclass
 class MarkedJournal:
 	def __init__(self, jNum: int, jText: str, cgi: int=0, labels=None):
 		self.jNum = jNum

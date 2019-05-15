@@ -37,6 +37,7 @@ class Controller:
 		self.model = None 
 		self.autoSaver = Timer(10, self.startAutoSave)
 		self.connectIntroToTask()
+		# self.intro.resize(900,600)
 		self.intro.show()
 
 		result = self.app.exec_()

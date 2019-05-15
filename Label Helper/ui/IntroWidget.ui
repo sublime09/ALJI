@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>784</width>
-    <height>608</height>
+    <width>900</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>676</width>
-    <height>542</height>
+    <width>900</width>
+    <height>600</height>
    </size>
   </property>
   <property name="font">
@@ -52,95 +52,78 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QLabel" name="InstructionsLabel">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="inputMethodHints">
-      <set>Qt::ImhNone</set>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
      </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;docs-internal-guid-267460d2-7fff-ab05-71db-b4f90adb88b5&quot;/&gt;&lt;span style=&quot; font-family:'Arial'; color:#000000; background-color:transparent;&quot;&gt;T&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; color:#000000; background-color:transparent;&quot;&gt;hank you for contributing to the &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:696; color:#000000; background-color:transparent;&quot;&gt;A&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; color:#000000; background-color:transparent;&quot;&gt;ctive &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:696; color:#000000; background-color:transparent;&quot;&gt;L&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; color:#000000; background-color:transparent;&quot;&gt;istening &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:696; color:#000000; background-color:transparent;&quot;&gt;J&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; color:#000000; background-color:transparent;&quot;&gt;ournal &lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:696; color:#000000; background-color:transparent;&quot;&gt;I&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; color:#000000; background-color:transparent;&quot;&gt;nteraction (&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; font-weight:696; color:#000000; background-color:transparent;&quot;&gt;ALJI&lt;/span&gt;&lt;span style=&quot; font-family:'Arial'; color:#000000; background-color:transparent;&quot;&gt;) project. ALJI is a program designed to support the counseling of college students with depression or other illnesses by privately responding to their expressive writing or personal journal entries. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;See the online instructions for your task description and an overview of the ALJI project before continuing. It is important you follow those instructions to remain consistent with other contributors. &lt;/p&gt;&lt;p&gt;Those with either a professional or academic background in recognizing mental health indicators are uniquely qualified to the task of labeling the following personal journals.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
-     <property name="readOnly">
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thank you for contributing to the &lt;span style=&quot; font-weight:600;&quot;&gt;A&lt;/span&gt;ctive &lt;span style=&quot; font-weight:600;&quot;&gt;L&lt;/span&gt;istening &lt;span style=&quot; font-weight:600;&quot;&gt;J&lt;/span&gt;ournal &lt;span style=&quot; font-weight:600;&quot;&gt;I&lt;/span&gt;nteraction (&lt;span style=&quot; font-weight:600;&quot;&gt;ALJI&lt;/span&gt;) project. ALJI is a program designed to support the counseling of college students with depression by privately responding to their expressive writing or personal journal entries. &lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This program is used to label the dataset that will be used in the training and testing of ALJI. The ALJI program can learn how to detect when an author is going through a mental health crisis based off of their expressive language and the labels you assign to certain language. &lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You are given about 6 journal entries to read and label, which will take roughly 30 minutes to complete. Which entries you are labeling is determined by your assigned Group#.  &lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;It is important you follow this guide when labeling journal entries:&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;• Read the entire passage as if it is an entry in someone's personal journal or diary&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;• Consider the mental wellness of the author (assume the author is a high school senior in the USA, age 18)&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;• Take note of any sentences that are alarming or concerning (if any). If you beleive the author of this journal may need professional mental health support / couseling, do the following:&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;• Clarify the reason of your concern by applying a 'Crisis Label' to the journal entry ('checking' the checkbox). Some default labels are provided, and you may create custom labels as you see fit. &lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;• When you have completed the labeling task for each entry in the group, follow the online instructions for reporting the labeling results to the researcher.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <property name="openExternalLinks">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="BottomHoriLayout">
-     <item>
-      <widget class="QCheckBox" name="AcceptCheckBox">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="acceptDrops">
-        <bool>false</bool>
-       </property>
-       <property name="autoFillBackground">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string>I Agree that I am qualified for this task</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>15</width>
-         <height>15</height>
-        </size>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-       <property name="tristate">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
+    <widget class="QCheckBox" name="AcceptCheckBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::DefaultContextMenu</enum>
+     </property>
+     <property name="acceptDrops">
+      <bool>false</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>I Agree that I am qualified for this task</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>15</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QSpinBox" name="groupNumSpinBox">
        <property name="suffix">
@@ -188,6 +171,19 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
    </item>
    <item>
@@ -202,12 +198,7 @@ p, li { white-space: pre-wrap; }
       <enum>QFrame::NoFrame</enum>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Email Patrick Sullivan
-(&lt;a href=&quot;mailto:sublime@vt.edu?subject=ALJI Label Helper question&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;sublime@vt.edu&lt;/span&gt;&lt;/a&gt;)
-
-for any questions you have on the project. 
-
-&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Email the primary researcher, Patrick Sullivan (&lt;a href=&quot;mailto:sublime@vt.edu?subject=ALJI Label Helper question&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;sublime@vt.edu&lt;/span&gt;&lt;/a&gt;) for any questions you have on the ALJI project or your task. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>

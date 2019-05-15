@@ -28,8 +28,8 @@ exe: $(outName).spec all
 
 spec: all
 	pyinstaller --windowed Controller.py --name $(outName) $(upx)
-# oneDist: all 
-# 	pyinstaller --onefile --windowed Controller.py --name $(outName) $(upx)
+oneSpec: all 
+	pyinstaller --onefile --windowed Controller.py --name $(outName) $(upx)
 
 distResources: all
 	cp --recursive --force Journals dist/
@@ -50,3 +50,4 @@ clean:
 	rm -rf __pycache__ &
 	rm -rf build/ &
 	rm -rf dist/ &
+	rm -rf LabelResults

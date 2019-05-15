@@ -1,7 +1,18 @@
+import sys
 import os
 
-journalsFilepath = os.path.join("..", "Journals")
-resultsFilespath = os.path.join("..", "LabelResults")
+cwd = os.getcwd()
+realFile = os.path.realpath(__file__)
+dir_path = os.path.dirname(realFile)
+dir_fake_path = os.path.dirname(__file__)
+basePaths = [cwd, dir_path, dir_fake_path]
+upPaths = [os.path.dirname(p) for p in basePaths]
+upUpPaths = [os.path.dirname(p) for p in upPaths]
+
+maybePaths = basePaths + upPaths + upUpPaths
+
+journalsFolder = "Journals"
+resultsFilespath = os.path.join(cwd, "LabelResults")
 dateStr = " 2019-02-04"
 
 def writeJournalGroup(groupNum, contents):
@@ -19,20 +30,16 @@ def readJournalGroup(groupNum):
 def readJTextForJNum(jNum):
 	entryStr = "Entry" + str(jNum).zfill(3)
 	fName = entryStr + dateStr + ".txt"
-	fPath = os.path.join(journalsFilepath, fName)
-	return readFile(fPath)
+	fName = os.path.join(journalsFolder, fName)
 
-def walkJournalsGen():
-	walkPath = os.path.join(journalsFilepath)
-	for root, dirs, files in os.walk(walkPath):
-		for fName in files:
-			if not fName.startswith("Entry"):
-				continue
-			if not fName.endswith(".txt"):
-				continue
-			fPath = os.path.join(root, fName)
-			yield fPath, fName
-
+	for onePath in maybePaths:
+		fPath = os.path.join(onePath, fName)
+		if os.path.isfile(fPath):
+			print("FILE FOUND: " + str(fPath), file=sys.stderr)
+			return readFile(fPath)
+		else:
+			print("Could not find file: " + str(fPath), file=sys.stderr)
+	raise FileNotFoundError(fName)
 
 def readFile(filepath):
 	fileText = None

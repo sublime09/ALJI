@@ -8,7 +8,18 @@ from ui.LabelingWidget import Ui_LabelingWidget
 from ui.LabelFrame import LabelFrame
 
 import logging as log
-log.basicConfig(filename='ALJI.log', filemode='w', level=log.CRITICAL)
+# log.basicConfig(filename='err.log', filemode='w', level=log.DEBUG)
+# log.setLevel(log.DEBUG)
+
+# handler = log.StreamHandler(sys.stderr)
+log.basicConfig(filename='err.log', filemode='w')
+root = log.getLogger()
+root.setLevel(log.DEBUG)
+handler = log.StreamHandler(sys.stderr)
+handler.setLevel(log.DEBUG)
+formatter = log.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+root.addHandler(handler)
 
 def toWidget(wigObject):
 	wig = QtWidgets.QWidget()
@@ -26,7 +37,6 @@ class Controller:
 		self.model = None 
 		self.autoSaver = Timer(10, self.startAutoSave)
 		self.connectIntroToTask()
-		log.warning("intro.show()")
 		self.intro.show()
 
 		result = self.app.exec_()
@@ -36,7 +46,6 @@ class Controller:
 		sys.exit(result)
 
 	def showLabelTask(self, groupNum):
-		log.warning("showLabelTask")
 		self.model = JournalGroup(groupNum)
 		self.setupJournalNav()
 		self.setupFontChanges()
@@ -53,7 +62,6 @@ class Controller:
 			self.autoSaver.start()
 
 	def updateView(self):
-		log.warning("updateView")
 		m = self.model
 		ui = self.labeler.ui
 		# NAV LABEL
@@ -89,7 +97,6 @@ class Controller:
 		self.labeler.ui.forwardButton.clicked.connect(goNext)
 
 	def addCrisisLabel(self, cName, checked=False):
-		log.info("addCrisisLabel")
 		def doCheck():
 			self.model.currentMark.toggleLabel(cName)
 		def doDelete():

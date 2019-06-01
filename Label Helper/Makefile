@@ -1,10 +1,9 @@
-uisFold = ui/
-uis = $(uisFold)IntroWidget.py $(uisFold)LabelingWidget.py
-uiRes = $(uisFold)images/icons_rc.py
+uis = ui/IntroWidget.py ui/LabelingWidget.py
+uiRes = ui/images/icons_rc.py
 scripts = ../env/Scripts
 outName = ALJILabelHelper
 manyExe = dist/$(outName)/$(outName).exe
-upx = --noupx
+pyInstallOpts = --windowed --name $(outName) --noupx
 
 run: all 
 	python Controller.py
@@ -27,16 +26,12 @@ exe: $(outName).spec all
 	pyinstaller $(outName).spec
 
 spec: all
-	pyinstaller --windowed Controller.py --name $(outName) $(upx)
+	pyinstaller Controller.py $(pyInstallOpts)
 oneSpec: all 
-	pyinstaller --onefile --windowed Controller.py --name $(outName) $(upx)
+	pyinstaller Controller.py $(pyInstallOpts) --onefile
 
 distResources: all
 	cp --recursive --force Journals dist/
-# 	mkdir dist/ui
-# 	cp --recursive --force images dist/ui
-# 	cp --recursive --force Journals dist/$(outName)/
-# 	cp --recursive --force images dist/$(outName)/
 
 dev: all 
 	start ../devProject.sublime-project -WindowStyle Hidden

@@ -6,7 +6,7 @@ kramdown:
 future: true
 jailed: false
 # theme: jekyll-theme-primer
-# theme: modernist
-theme: jekyll-theme-slate
+theme: jekyll-theme-modernist
+# theme: jekyll-theme-slate
 gfm_quirks: paragraph_end
 

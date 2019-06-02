@@ -1,7 +1,6 @@
 ---
 title: CGI-S scale
 layout: default
-permalink: CGISscale.html
 ---
 
 # CGI-S Scale

@@ -20,7 +20,7 @@ To achieve this, a crisis detection model must be created and tested on a number
 
 The texts in the current dataset are publicly sourced from the ​Scholastic Awards website​. The “Personal Essay and Memoir” category encourages a large amount of creativity and expressiveness from the authors, and is promising as a preliminary dataset. While this dataset may prove to be dissimilar to than actual private journal entries, the numerous benefits of a passive (non-interactive) ALJI program can outweigh the risks (see the ​Expressive Writing​ and ​Human-Computer Interaction sections).
 
-The ALJI project is open-source to ensure transparency, encourage collaboration, and to respect the goals of the project. You can see all components and code related to the project here: ​https://github.com/sublime09/ALJI
+The ALJI project is open-source to ensure transparency, encourage collaboration, and to respect the goals of the project. You can see all components and code related to the project here: [​https://github.com/sublime09/ALJI]
 
 
 ## Task Structure
@@ -37,6 +37,7 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 - [**Download for Windows**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
 	- Tested on Windows 10. Other systems may vary in results.
 - [**Download for OSX**](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Mac.zip)
+	- *Note*: Macs may prevent you from starting the program because I am not registered as an Apple Developer. Move the 'ALJI Label Helper' program to your 'Applications' folder to see an option to open the program when starting it.  
 	- Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
 	- Known bug: sometimes the main view appears frozen and unresponsive.
 	    - Workaround: Scrolling in the main view will refresh the view.
@@ -60,7 +61,7 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 1. Locate the label results
 - Find the folder named “LabelResults” in the same location where you ran the program.
 - Inside the folder should be files similar to “Group1Labels.json”. These are the label results you created by using the program. You can read their contents like a normal text file. 
-2. Email the researcher (Patrick Sullivan): ​sublime@vt.edu
+2. Email the researcher (Patrick Sullivan): [​sublime@vt.edu]
 - Attach the JSON file you located to the email
 - Feel free to add any thoughts, concerns, questions about the ALJI project.
 - The researcher may respond through email at a later date asking for some clarifications about any custom labels, or errors that can occur.

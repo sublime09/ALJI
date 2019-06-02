@@ -8,4 +8,4 @@ The ​ **A**ctive ​ **L**​istening ​ **J**​ournal ​ **I**​nteractio
 ## Links
 ### [**Github Repository**](https://github.com/sublime09/ALJI)
 ### [**ALJI Labeling Instructions**](Labeling_Instructions)
-### [**CGI-S Scale**](CGIS_scale)
+### [**CGI-S Scale**](CGIS_Scale)

@@ -5,14 +5,13 @@ layout: default
 
 # ALJI Label Helper Instructions
 
-* [Goals of ALJI][Goals]
-* [Task Structure][Structure]
-* [Task Labeling][Labeling]
-* [Project Details][Details]
-* [About Me][About Me]
+* [Goals of ALJI](#goals-of-alji)
+* [Task Structure](#task-structure)
+* [Task Labeling](#task-labeling)
+* [Project Details](#project-details)
+* [About Me](##about-me)
 
 
-[Goals]:
 ## Goals of ALJI
 
 The ​ **A**ctive ​ **L**​istening ​ **J**​ournal ​ **I**​nteraction (​ **ALJI**​) project aims to create a program designed to support the counseling of young students with depression by privately responding to their expressive writing or personal journal entries. ALJI may be used as a widely accessible entry point into clinical mental health support systems, providing critical guidance to those with suffering health.
@@ -23,7 +22,7 @@ The texts in the current dataset are publicly sourced from the ​Scholastic Awa
 
 The ALJI project is open-source to ensure transparency, encourage collaboration, and to respect the goals of the project. You can see all components and code related to the project here: ​https://github.com/sublime09/ALJI
 
-[Structure]: 
+
 ## Task Structure
 
 Your task has been designed to take roughly 30 minutes to complete. The program automatically saves your task progress periodically and on a normal close of the program. You will be shown about 6 journal entries to read and label, using the ALJI Label Helper program (links are below). Your participation and responses will be kept confidential.
@@ -48,7 +47,6 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 - A screenshot of the error is usually very helpful
 - Attaching the “err.log” file found near the program may help as well.
 
-[Labeling]: 
 ## Task Labeling
 
 **It is important you follow this guide when labeling journal entries to remain consistent with the other contributors:**
@@ -68,7 +66,6 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 - Feel free to add any thoughts, concerns, questions about the ALJI project.
 - The researcher may respond through email at a later date asking for some clarifications about any custom labels, or errors that can occur.
 
-[Details]: 
 ## Project Details
 There are three major components that ALJI blends together: Expressive Writing, Machine Learning, and Human-Computer Interaction.
 
@@ -82,7 +79,6 @@ Machine Learning is the use of computers to learn a task by finding patterns and
 ### Human-Computer Interaction
 Interaction design has a great effect on the effectiveness of a program. ALJI’s communication with the journal author must be centered around improving their well-being through non-judgemental feedback. This feedback is critical, since it is the primary addition that ALJI uses to go beyond acting as a basic personal journal. To align with a typical personal journal as closely as possible, feedback is kept minimal during regular use. However, when a mental health crisis is detected and confirmed, then a response is given to the author guiding them towards clinical mental health support systems. This response will be carefully crafted by mental health professionals to encourage the author to contact these support systems.
 
-[About Me]:
 ## About Me
 I am Patrick Sullivan, a graduate student within Virginia Tech’s Computer Science Department. I have a Bachelor’s in Computer Science along with a minor in Psychology. My research on the ALJI project is advised by Dr. Bert Huang (CS), Dr. Tanushree Mitra (CS), and Dr. Lee Cooper (Psych). There are four major passions that I have dedicated my life toward: teaching, computers, psychology, and music (in no particular order). I thoroughly enjoy mixing them together when I can.
 

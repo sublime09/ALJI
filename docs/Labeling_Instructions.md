@@ -30,7 +30,7 @@ Your task has been designed to take roughly 30 minutes to complete. The program 
 You may withdraw from this task at any time, for any reason. Deleting all files associated with ALJI is simple: delete the file you downloaded and the folder you uncompressed from it.
 
 **<span style="color:red">Warning</span>​**:
-The journals you will see may contain stressful and graphic content. They may depict domestic violence, sexual violence, substance abuse, and other sensitive events and topics. Be aware of your own health and wellbeing before beginning the labeling task. Your health is more important than this project.
+The journals you will see may contain stressful and graphic content. They may depict domestic violence, sexual violence, substance abuse, and other sensitive events and topics. Be aware of your own health and well-being before beginning the labeling task. Your health is more important than this project.
 
 Take note of the group number assigned to you by the researcher (Patrick Sullivan). Make sure to select the group number on the very first screen that is shown. This number affects which journals you are assigned to label.
 

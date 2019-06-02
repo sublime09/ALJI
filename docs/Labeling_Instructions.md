@@ -16,7 +16,7 @@ layout: default
 
 The ​ **A**ctive ​ **L**​istening ​ **J**​ournal ​ **I**​nteraction (​ **ALJI**​) project aims to create a program designed to support the counseling of young students with depression by privately responding to their expressive writing or personal journal entries. ALJI may be used as a widely accessible entry point into clinical mental health support systems, providing critical guidance to those with suffering health.
 
-To achieve this, a crisis detection model must be created and tested on a number of personal journal texts. This model is designed to align as closely as possible to your judgement of the personal journal text (see the ​Machine Learning​ section). You are given the ALJI Label Helper program to help label the dataset, which will be used in the training and testing of the final ALJI program.
+To achieve this, a crisis detection model must be created and tested on a number of personal journal texts. This model is designed to align as closely as possible to your judgment of the personal journal text (see the ​Machine Learning​ section). You are given the ALJI Label Helper program to help label the dataset, which will be used in the training and testing of the final ALJI program.
 
 The texts in the current dataset are publicly sourced from the ​Scholastic Awards website​. The “Personal Essay and Memoir” category encourages a large amount of creativity and expressiveness from the authors, and is promising as a preliminary dataset. While this dataset may prove to be dissimilar to than actual private journal entries, the numerous benefits of a passive (non-interactive) ALJI program can outweigh the risks (see the ​Expressive Writing​ and ​Human-Computer Interaction sections).
 
@@ -34,13 +34,12 @@ The journals you will see may contain stressful and graphic content. They may de
 
 Take note of the group number assigned to you by the researcher (Patrick Sullivan). Make sure to select the group number on the very first screen that is shown. This number affects which journals you are assigned to label.
 
-*[Download for Windows](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip) *
-- Tested on Windows 10. Other systems may vary in results.
-
-*[Download for OSX](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Mac.zip)*
-- Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
-- Known bug: sometimes the main view appears frozen and unresponsive.
-    - Workaround: Scrolling in the main view will refresh the view.
+- [**Download for Windows**](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
+	- Tested on Windows 10. Other systems may vary in results.
+- [**Download for OSX**](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Mac.zip)
+	- Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
+	- Known bug: sometimes the main view appears frozen and unresponsive.
+	    - Workaround: Scrolling in the main view will refresh the view.
 
 **Troubleshooting / Reporting errors:**
 - Contact the researcher through email and describe the error you encountered.
@@ -70,21 +69,18 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 There are three major components that ALJI blends together: Expressive Writing, Machine Learning, and Human-Computer Interaction.
 
 ### Expressive Writing
-Disclosure and reflection have had a fundamental role in many therapies to promote healing. Personal journals are an excellent way of promoting some degree of disclosure and reflection in the absence of a mental health professional. Clinical studies of expressive writing find that there are several health benefits that come at nearly zero cost^1 2. The additions that ALJI places on top of expressive writing may extend this further. For ALJI to act as a platform for expressive writing, it must first provide an acceptable space where authors can share deeply personal information. Transparency is the most direct way to build trust in software, so ALJI has been founded as an open-source project. This lets anyone view and scrutinize all portions of the software for any breaches of confidentiality. In addition, ALJI has been designed to never communicate over the internet, restricting ownership and access to solely the author of the personal journal.
+Disclosure and reflection have had a fundamental role in many therapies to promote healing. Personal journals are an excellent way of promoting some degree of disclosure and reflection in the absence of a mental health professional. Clinical studies of expressive writing find that there are several health benefits that come at nearly zero cost <sup>1</sup> <sup>2</sup>. The additions that ALJI places on top of expressive writing may extend this further. For ALJI to act as a platform for expressive writing, it must first provide an acceptable space where authors can share deeply personal information. Transparency is the most direct way to build trust in software, so ALJI has been founded as an open-source project. This lets anyone view and scrutinize all portions of the software for any breaches of confidentiality. In addition, ALJI has been designed to never communicate over the internet, restricting ownership and access to solely the author of the personal journal.
 
 
 ### Machine Learning
-Machine Learning is the use of computers to learn a task by finding patterns and inferring information, instead of following explicit instructions. As a very simple example: a computer can detect that the word ‘tired’ was used ten times in one journal and two times in another journal of a similar length. From this pattern, it may infer (without certainty) that the first journal author is more tired than the second. A computer could understand very natural language when equipped with a much larger vocabulary and a more nuanced interpretation. If you are curious to learn more about Machine Learning, these two short, enjoyable videos are informative: ​https://youtu.be/aircAruvnKk​ and ​https://youtu.be/wvWpdrfoEv0​. A longer, more detailed video about the inner mechanics (for one specific type of machine learning) can be found here: ​https://youtu.be/aircAruvnKk
+Machine Learning is the use of computers to learn a task by finding patterns and inferring information, instead of following explicit instructions. As a very simple example: a computer can detect that the word ‘tired’ was used ten times in one journal and two times in another journal of a similar length. From this pattern, it may infer (without certainty) that the first journal author is more tired than the second. A computer could understand very natural language when equipped with a much larger vocabulary and a more nuanced interpretation. If you are curious to learn more about Machine Learning, these two short, enjoyable videos are informative: [​here](https://youtu.be/R9OHn5ZF4Uo) and [here](https://youtu.be/wvWpdrfoEv0). A longer, more detailed video about the inner mechanics (for one specific type of machine learning) can be found [here](https://youtu.be/aircAruvnKk)
 
 ### Human-Computer Interaction
-Interaction design has a great effect on the effectiveness of a program. ALJI’s communication with the journal author must be centered around improving their well-being through non-judgemental feedback. This feedback is critical, since it is the primary addition that ALJI uses to go beyond acting as a basic personal journal. To align with a typical personal journal as closely as possible, feedback is kept minimal during regular use. However, when a mental health crisis is detected and confirmed, then a response is given to the author guiding them towards clinical mental health support systems. This response will be carefully crafted by mental health professionals to encourage the author to contact these support systems.
+Interaction design has a great effect on the effectiveness of a program. ALJI’s communication with the journal author must be centered around improving their well-being through non-judgmental feedback. This feedback is critical, since it is the primary addition that ALJI uses to go beyond acting as a basic personal journal. To align with a typical personal journal as closely as possible, feedback is kept minimal during regular use. However, when a mental health crisis is detected and confirmed, then a response is given to the author guiding them towards clinical mental health support systems. This response will be carefully crafted by mental health professionals to encourage the author to contact these support systems.
 
 ## About Me
 I am Patrick Sullivan, a graduate student within Virginia Tech’s Computer Science Department. I have a Bachelor’s in Computer Science along with a minor in Psychology. My research on the ALJI project is advised by Dr. Bert Huang (CS), Dr. Tanushree Mitra (CS), and Dr. Lee Cooper (Psych). There are four major passions that I have dedicated my life toward: teaching, computers, psychology, and music (in no particular order). I thoroughly enjoy mixing them together when I can.
 
+> <sup>1</sup> Lepore, S. J. & Smyth, J. M. (2002). The writing cure: How expressive writing promotes health and emotional well-being. Washington, D.C.: American Psychological Association.
 
-(^1) Lepore, S. J. & Smyth, J. M. (2002). The writing cure: How expressive writing promotes health and
-emotional well-being. Washington, D.C.: American Psychological Association.
-(^2) Pennebaker, J. W., & Chung, C. K. (2011). Expressive writing and its links to mental and physical
-health. In H. S. Friedman (Ed.), ​ _Oxford handbook of health psychology_ ​ (pp.417- 437). New York, NY:
-Oxford University Press.
+> <sup>2</sup> Pennebaker, J. W., & Chung, C. K. (2011). Expressive writing and its links to mental and physical health. In H. S. Friedman (Ed.), ​ _Oxford handbook of health psychology_ ​ (pp.417- 437). New York, NY: Oxford University Press.

@@ -38,7 +38,7 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 - [**Download Link for Windows**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
      - Tested on Windows 10. Other systems may vary in results.
 - [**Download Link for OSX**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Mac.zip)
-     - **Note**: Macs may prevent you from starting the program because I am not registered as an "Apple Developer". Move the 'ALJI Label Helper' program to your Applications folder to reveal an option to open the unrecognized program and run it normally.  
+     - **Note**: Macs may prevent you from starting the program because I am not registered as an "Apple Developer". Move the 'ALJI Label Helper' program to your Applications folder to reveal an option to open the unrecognized program and run it normally.  [Reference Screenshot](./assets/img/alji_open_on_mac.png)
 	 - Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
 	 - Known bug: sometimes the main view appears frozen and unresponsive.
 	   - Workaround: Scrolling in the main view will refresh the view.

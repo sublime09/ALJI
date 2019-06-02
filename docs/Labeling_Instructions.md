@@ -9,7 +9,7 @@ layout: default
 * [Task Structure](#task-structure)
 * [Task Labeling](#task-labeling)
 * [Project Details](#project-details)
-* [About Me](##about-me)
+* [About Me](#about-me)
 
 
 ## Goals of ALJI
@@ -34,7 +34,7 @@ The journals you will see may contain stressful and graphic content. They may de
 
 Take note of the group number assigned to you by the researcher (Patrick Sullivan). Make sure to select the group number on the very first screen that is shown. This number affects which journals you are assigned to label.
 
-- [**Download for Windows**](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
+- [**Download for Windows**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
 	- Tested on Windows 10. Other systems may vary in results.
 - [**Download for OSX**](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Mac.zip)
 	- Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
@@ -73,7 +73,7 @@ Disclosure and reflection have had a fundamental role in many therapies to promo
 
 
 ### Machine Learning
-Machine Learning is the use of computers to learn a task by finding patterns and inferring information, instead of following explicit instructions. As a very simple example: a computer can detect that the word ‘tired’ was used ten times in one journal and two times in another journal of a similar length. From this pattern, it may infer (without certainty) that the first journal author is more tired than the second. A computer could understand very natural language when equipped with a much larger vocabulary and a more nuanced interpretation. If you are curious to learn more about Machine Learning, these two short, enjoyable videos are informative: [​here](https://youtu.be/R9OHn5ZF4Uo) and [here](https://youtu.be/wvWpdrfoEv0). A longer, more detailed video about the inner mechanics (for one specific type of machine learning) can be found [here](https://youtu.be/aircAruvnKk)
+Machine Learning is the use of computers to learn a task by finding patterns and inferring information, instead of following explicit instructions. As a very simple example: a computer can detect that the word ‘tired’ was used ten times in one journal and two times in another journal of a similar length. From this pattern, it may infer (without certainty) that the first journal author is more tired than the second. A computer could understand very natural language when equipped with a much larger vocabulary and a more nuanced interpretation. If you are curious to learn more about Machine Learning, these two short, enjoyable videos are informative: [​here](https://youtu.be/R9OHn5ZF4Uo) and [here](https://youtu.be/wvWpdrfoEv0). A longer, more detailed video about the inner mechanics (for one specific type of machine learning) can be found [here](https://youtu.be/aircAruvnKk). 
 
 ### Human-Computer Interaction
 Interaction design has a great effect on the effectiveness of a program. ALJI’s communication with the journal author must be centered around improving their well-being through non-judgmental feedback. This feedback is critical, since it is the primary addition that ALJI uses to go beyond acting as a basic personal journal. To align with a typical personal journal as closely as possible, feedback is kept minimal during regular use. However, when a mental health crisis is detected and confirmed, then a response is given to the author guiding them towards clinical mental health support systems. This response will be carefully crafted by mental health professionals to encourage the author to contact these support systems.

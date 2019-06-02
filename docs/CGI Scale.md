@@ -1,6 +1,7 @@
 ---
 title: CGI-S scale
 layout: default
+permalink: CGISscale.html
 ---
 
 # CGI-S Scale
@@ -16,4 +17,4 @@ The Clinician Global Impression of Severity Scale
 | 6 | **SEVERELY ILL** - Disruptive pathology, behavior and function are frequently influenced by symptoms, may require assistance from others |
 | 7 | **AMONG THE MOST EXTREMELY ILL PATIENTS** - Pathology drastically interferes in many life functions, may be hospitalized |
 
-> Busner, J., & Targum, S. D. (). The clinical global impressions scale: applying a research tool in clinical practice. Psychiatry (Edgmont (Pa. : Township)), 4(7), 28–37. 
+> Busner, J., & Targum, S. D. (2007). The clinical global impressions scale: applying a research tool in clinical practice. Psychiatry (Edgmont), 4(7), 28.

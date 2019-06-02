@@ -5,4 +5,4 @@ layout: page
 
 # ALJI Project Documentation
 
-- [**ALJI Labeling Instructions**](ALJI/Labeling_Instructions.html)
+- [**ALJI Labeling Instructions**](Labeling_Instructions.html)

@@ -1,4 +1,6 @@
-github: [metadata]
+# github: [metadata]
+  # url: https://github.com/sublime09/ALJI
+github:
   url: https://github.com/sublime09/ALJI
 encoding: UTF-8
 kramdown:
@@ -11,5 +13,3 @@ jailed: false
 theme: jekyll-theme-slate
 gfm_quirks: paragraph_end
 
-# github: [metadata]
-#   url: https://github.com/sublime09/ALJI

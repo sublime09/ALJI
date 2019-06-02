@@ -34,6 +34,17 @@ The journals you will see may contain stressful and graphic content. They may de
 
 Take note of the group number assigned to you by the researcher (Patrick Sullivan). Make sure to select the group number on the very first screen that is shown. This number affects which journals you are assigned to label.
 
+<details><summary>HOW TO FIX PROBLEM</summary>
+<p>
+
+#### yes, even hidden code blocks!
+
+```python
+print("hello world!")
+```
+</p>
+</details>
+
 - [**Download for Windows**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
 	- Tested on Windows 10. Other systems may vary in results.
 - [**Download for OSX**](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Mac.zip)

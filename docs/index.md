@@ -1,6 +1,6 @@
 ---
 title: ALJI Label Helper Instructions
-layout: page
+layout: default
 ---
 
 # ALJI Project Documentation

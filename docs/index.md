@@ -1,7 +1,8 @@
 ---
-title: This is my title
-layout: post
+title: ALJI Label Helper Instructions
+layout: page
 ---
 
-Here is my page.
+# ALJI Project Documentation
 
+- [**ALJI Labeling Instructions**](/ALJI_Labeling_Instructions.html)

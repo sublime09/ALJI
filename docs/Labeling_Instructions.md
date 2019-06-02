@@ -34,22 +34,14 @@ The journals you will see may contain stressful and graphic content. They may de
 
 Take note of the group number assigned to you by the researcher (Patrick Sullivan). Make sure to select the group number on the very first screen that is shown. This number affects which journals you are assigned to label.
 
-<details><summary>Select here for Windows</summary>
-- [**Download Link**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
-- Tested on Windows 10. Other systems may vary in results.
-</details>
-
-<details><summary>Select here for OSX</summary>
-- [**Download Link**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Macintosh.zip)
-- **Note**: Macs may prevent you from starting the program because I am not registered as an Apple Developer. Move the 'ALJI Label Helper' program to your 'Applications' folder to see an option to open the program when starting it.  
-- Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
-- Known bug: sometimes the main view appears frozen and unresponsive.
-    - Workaround: Scrolling in the main view will refresh the view.
-</details>
-
 
 - [**Download for Windows**](https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Windows.zip)
+	- Tested on Windows 10. Other systems may vary in results.
 - [**Download for OSX**](​https://github.com/sublime09/ALJI/releases/latest/download/ALJI_Label_Helper_Mac.zip)
+	- **Note**: Macs may prevent you from starting the program because I am not registered as an Apple Developer. Move the 'ALJI Label Helper' program to your 'Applications' folder to see an option to open the program when starting it.  
+	- Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
+	- Known bug: sometimes the main view appears frozen and unresponsive.
+	    - Workaround: Scrolling in the main view will refresh the view.
 
 **Troubleshooting / Reporting errors:**
 - Contact the researcher through email and describe the error you encountered.

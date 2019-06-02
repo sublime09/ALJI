@@ -62,7 +62,7 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 1. Locate the label results
 - Find the folder named “LabelResults” in the same location where you ran the program.
 - Inside the folder should be files similar to “Group1Labels.json”. These are the label results you created by using the program. You can read their contents like a normal text file. 
-2. Email the researcher (Patrick Sullivan): [​sublime@vt.edu]
+2. Email the researcher (Patrick Sullivan): [​sublime@vt.edu](mailto:sublime@vt.edu)
 - Attach the JSON file you located to the email
 - Feel free to add any thoughts, concerns, questions about the ALJI project.
 - The researcher may respond through email at a later date asking for some clarifications about any custom labels, or errors that can occur.

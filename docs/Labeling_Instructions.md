@@ -42,7 +42,7 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
      - **Note**: Macs may prevent you from starting the program because I am not registered as an "Apple Developer". Move the 'ALJI Label Helper' program to your Applications folder to reveal an option to open the unrecognized program and run it normally.  [Reference Screenshot](./assets/img/alji_open_on_mac.png)
 	 - Tested on OSX 10.4 (Mojave). Other systems may may vary in results.
 	 - Known bug: sometimes the main view appears frozen and unresponsive.
-	   - Workaround: Scrolling in the main view will refresh the view.
+	   - Workaround: Scrolling in the main view, or navigating to another journal will refresh the view.
 
 **Troubleshooting / Reporting errors:**
 - Contact Patrick: [sublime@vt.edu](mailto:sublime@vt.edu) and describe the error you encountered.

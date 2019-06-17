@@ -14,3 +14,11 @@ To report your label results and finalize your contribution:
     - Attach the JSON file you previously located to the email
     - Feel free to add any thoughts, concerns, questions about the ALJI project.
     - The researcher may respond through email asking for clarification on custom labels, or errors that can occur.
+
+#### Screenshots:
+- ![image](./assets/img/resultsFolder.jpg)
+- ![image](./assets/img/resultsFile.jpg)
+- ![image](./assets/img/emailResults.jpg)
+
+[<- Back to contribute page](./contribute)
+

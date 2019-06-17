@@ -45,8 +45,8 @@ A larger, more comprehensive guide for unzipping files can be found [here for Wi
         - Windows users may see [this screen](./assets/img/protect1.jpg).  Clicking 'more info' reveals an option to 'Run anyway' as [seen here](./assets/img/protect2.jpg). 
         - [Tutorial: Opening an app from an unsigned developer on Mac](https://www.wikihow.com/Install-Software-from-Unsigned-Developers-on-a-Mac)
         - Mac users may also be able to simply move the entire 'ALJI Label Helper' folder inside the 'Applications' folder to unlock the application. 
-1. The ALJI Label Helper should be opened and running: ![image](./assets/img/running.jpg).  Do not continue until you have read all the instructions within the next section!
-
+1. The ALJI Label Helper should be opened and running. *Do not continue until you have read all the instructions within the next section!* ![image](./assets/img/running.jpg).  
+    
 
 #### Troubleshooting / Reporting errors:
 - Contact Patrick: [sublime@vt.edu](mailto:sublime@vt.edu?subect=ALJI_error) and describe the error you encountered.

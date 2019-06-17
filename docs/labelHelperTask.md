@@ -3,6 +3,8 @@ title: Label Helper Task
 layout: default
 ---
 
+[<- Back to contribute page](./contribute)
+
 ## Task Labeling
 
 **It is important you follow this guide when labeling journal entries to remain consistent with the other contributors:**
@@ -11,7 +13,7 @@ layout: default
 1. ***Select your assigned Group Number*** which was assigned to you within your email contact with the researcher.  Agree to the task's instructions and qualifications, and select 'Continue'. 
 1. Read the entire passage as if it is an entry in someone's personal journal or diary
 1. Consider the mental wellness of the author (assume the author is a high school senior in the USA, age 18)
-1. Based off of the information in the entry, estimate the author’s [​CGI-S rating](./CGIS_Scale) . Input this rating into the box alongside the journal entry.
+1. Based off of the information in the entry, estimate the author’s [​CGI-S rating](./CGIS_Scale). Input this rating into the box alongside the journal entry.
 1. Take note of *any* sentences that are alarming or concerning (even if just one sentence in the passage applies to it). If you believe the author of this journal would benefit from a referral to professional mental health support / counseling, do the following:
     - Clarify the reason of your concern by applying a label to the journal entry ('checking' the checkbox). Some default labels are provided, and you may create custom labels as you see fit.  
 1. After labeling all journals within your group (usually 6 or 7 journals), report your label results to the researcher (instructions on next page)
@@ -26,4 +28,4 @@ layout: default
 
 [<- Back to contribute page](./contribute)
 
-[-> Forward to Task Instructions page](./labelHelperTask)
+[-> Forward to Report Label Results page](./labelHelperReport)

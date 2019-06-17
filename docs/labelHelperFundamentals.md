@@ -14,7 +14,7 @@ You may withdraw from this task at any time, for any reason. Deleting all files 
 **<span style="color:red">Warning</span>​**:
 The journals you will see may contain stressful and graphic content. They may depict domestic violence, sexual violence, substance abuse, and other sensitive events and topics. Be aware of your own health and well-being before beginning the labeling task. Your health is more important than this project.
 
-Take note of the group number assigned to you by the researcher (Patrick Sullivan). Make sure to select the group number on the very first screen that is shown. This number affects which journals you are assigned to label.
+Take note of the group number assigned to you by the researcher (Patrick Sullivan). Make sure to select the group number on the very first screen that is shown in the ALJI Label Helper program. This number affects which journals you are assigned to label, and it is important to label the correct journals. 
 
 [<- Back to contribute page](./contribute)
 

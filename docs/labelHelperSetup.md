@@ -34,4 +34,6 @@ From this point, it is simply decompress the .zip file, open the folder, and lau
 
 
 
-[Back to contribute page](./contribute)
+[<- Back to contribute page](./contribute)
+
+[-> Forward to Task Instructions page](./labelHelperTask)

@@ -17,4 +17,4 @@ To skip directly to assisting ALJI by labeling journals:
 1. [**Label Journal Instructions**](./labelHelperTask)
 1. [**Report Label Results**](./labelHelperReport)
 
-For any questions, you can contact the researcher (Patrick Sullivan) through email: [sublime@vt.edu](mailto:sublime@vt.edu)
+For any questions, you can contact the researcher (Patrick Sullivan) through email: [sublime@vt.edu](mailto:sublime@vt.edu?subect=ALJI_question)

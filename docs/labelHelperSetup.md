@@ -27,12 +27,9 @@ layout: default
 From this point, it is simply decompress the .zip file, open the folder, and launch the "ALJI Label Helper" program inside.
 
 **Troubleshooting / Reporting errors:**
-- Contact Patrick: [sublime@vt.edu](mailto:sublime@vt.edu) and describe the error you encountered.
+- Contact Patrick: [sublime@vt.edu](mailto:sublime@vt.edu?subect=ALJI_error) and describe the error you encountered.
 - A screenshot of the error is usually very helpful
 - Attaching the “err.log” file found near the program may help as well.
-
-
-
 
 [<- Back to contribute page](./contribute)
 

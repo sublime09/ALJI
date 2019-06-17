@@ -3,6 +3,8 @@ title: Report ALJI Journal Labels
 layout: default
 ---
 
+[<- Back to contribute page](./contribute)
+
 To report your label results and finalize your contribution:
 
 1. Locate the label results

@@ -3,7 +3,7 @@ title: ALJI Label Helper Setup
 layout: default
 ---
 
-[Back to contribute page](./contribute)
+[<- Back to contribute page](./contribute)
 
 ### Download 
 

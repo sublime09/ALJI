@@ -18,4 +18,4 @@ Take note of the group number assigned to you by the researcher (Patrick Sulliva
 
 [<- Back to contribute page](./contribute)
 
-[-> Forward to Reporting Label Results page](./labelHelperSetup)
+[-> Forward to Label Helper Setup page](./labelHelperSetup)

@@ -7,9 +7,9 @@ layout: default
 
 ### Label Helper Fundamentals
 
-The ALJI Label Helper task has been designed to take roughly ~~30 minutes to complete~~. The program automatically saves your task progress periodically and on a normal close of the program. You will be shown about 6 journal entries to read and label, using the ALJI Label Helper program (links are below). Your participation and responses will be kept confidential.
+The ALJI Label Helper task can take 1 to 2 hours to complete in some cases. The program automatically saves your task progress periodically and on a normal close of the program. You will be shown  6 or 7 journal entries to read and label, using the ALJI Label Helper program.  This creates a label results file, which can simply be emailed to the researcher.  Your participation and responses will be kept confidential from the public and any other participants.
 
-You may withdraw from this task at any time, for any reason. Deleting all files associated with ALJI is simple: delete the file you downloaded and the folder you uncompressed from it.
+You may withdraw from this task at any time, for any reason.  The researcher will not contact you about topics beyond this project, and will respect your time.  
 
 **<span style="color:red">Warning</span>​**:
 The journals you will see may contain stressful and graphic content. They may depict domestic violence, sexual violence, substance abuse, and other sensitive events and topics. Be aware of your own health and well-being before beginning the labeling task. Your health is more important than this project.

@@ -13,18 +13,27 @@ layout: default
 1. ***Select your assigned Group Number*** which was assigned to you within your email contact with the researcher.  Agree to the task's instructions and qualifications, and select 'Continue'. 
 1. Read the entire passage as if it is an entry in someone's personal journal or diary
 1. Consider the mental wellness of the author (assume the author is a high school senior in the USA, age 18)
-1. Based off of the information in the entry, estimate the author’s [​CGI-S rating](./CGIS_Scale). Input this rating into the box alongside the journal entry.
-1. Take note of *any* sentences that are alarming or concerning (even if just one sentence in the passage applies to it). If you believe the author of this journal would benefit from a referral to professional mental health support / counseling, do the following:
-    - Clarify the reason of your concern by applying a label to the journal entry ('checking' the checkbox). Some default labels are provided, and you may create custom labels as you see fit.  
-1. After labeling all journals within your group (usually 6 or 7 journals), report your label results to the researcher (instructions on next page)
+1. Based off of the information in the entry, estimate the author’s [**​CGI-S rating**](./CGIS_Scale). Input this rating into the box alongside the journal entry.
+    - **Known bug in Macs**: sometimes the main view appears frozen and doesn't respond to input.
+        - **Workaround**: Scrolling in the main view, or navigating to between journals will refresh the view.  Your work should be saved, it just is not being display correctly.  
+1. Take note of *any* passages that are alarming or concerning, even if it is a single sentence.  
+    - *Note:* A mental health indicator from the author's past is  considered to be concerning if author could be suffering in the present.  
+1. If there are concerns, clarify this by 'checking' the applicable labels (see below screenshots). Some default labels are provided, and you may name custom labels and add them for indicators beyond the default labels list.  
+    - In the final prototype of ALJI, these concerns will first be confirmed by the author before referring them to mental health support services. (e.g. "This sounds like you currently have insomnia and are feeling fatigued.  Is that correct?")
+1. After labeling all journals within your group (6-7 journals), report your label results to the researcher (instructions are on next page)
 
-- Known bug: In Macs, sometimes the main view appears frozen and unresponsive.
-    - Workaround: Scrolling in the main view, or navigating to another journal will refresh the view.  Your work should be saved, it just is not being display correctly.  
+[<- Back to contribute page](./contribute)
+
+[-> Forward to Report Label Results page](./labelHelperReport)
 
 ### Interface description and screenshots:
 
 ![image](./assets/img/labelWindow.jpg)
+---
 ![image](./assets/img/labelWindowAnno.jpg)
+---
+![image](./assets/img/iconActions.jpg)
+---
 
 [<- Back to contribute page](./contribute)
 

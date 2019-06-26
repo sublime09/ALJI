@@ -41,7 +41,7 @@ A larger, more comprehensive guide for unzipping files can be found [here for Wi
 #### Run the Label Helper
 
 1. In the 'ALJI Label Helper' folder, you should see a file called 'ALJILabelHelper'.  That is the application we will use.  Double click it to begin
-    - Your computer may warn you about running this program.  This is because Microsoft and Apple do not know me (the developer) very well.  I can assure you that *every piece of code* I have written for this project can be scrutinized from the project's [github repository](https://github.com/sublime09/ALJI).  
+    - Your computer may warn you about running this program.  This is because Microsoft and Apple do not know me (the developer) very well.  I can assure you that *every piece of this program* can be seen and scrutinized from the project's [github repository page](https://github.com/sublime09/ALJI).  Feel free to contact me about this ([sublime@vt.edu](mailto:sublime@vt.edu?subect=ALJI_question))
         - Windows users may see [this screen](./assets/img/protect1.jpg).  Clicking 'more info' reveals an option to 'Run anyway' as [seen here](./assets/img/protect2.jpg). 
         - [Tutorial: Opening an app from an unsigned developer on Mac](https://www.wikihow.com/Install-Software-from-Unsigned-Developers-on-a-Mac)
         - Mac users may also be able to simply move the entire 'ALJI Label Helper' folder inside the 'Applications' folder to unlock the application. 

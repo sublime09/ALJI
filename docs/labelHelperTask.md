@@ -30,10 +30,15 @@ layout: default
 ### Interface description and screenshots:
 
 ![image](./assets/img/labelWindow.jpg)
+
 ---
+
 ![image](./assets/img/labelWindowAnno.jpg)
+
 ---
+
 ![image](./assets/img/iconActions.jpg)
+
 ---
 
 [<- Back to contribute page](./contribute)

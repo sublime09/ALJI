@@ -3,11 +3,13 @@ title: Concerning Examples
 layout: default
 ---
 
+---
+#### ***<span style="color:red">Warning</span>: These examples are yet to be assessed and confirmed by mental health professionals.  Email Patrick (sublime@vt.edu) for changes/suggestions.  This message will be removed after the examples are confirmed***
+---
+
 [<- Back to Task Instructions page](./labelHelperTask)
 
-### Concerning Journal Examples 
-
-#### ***<span style="color:red">Warning</span>: These examples are yet to be assessed and confirmed by mental health professionals.  Email Patrick (sublime@vt.edu) for changes/suggestions.  This message will be removed after the examples are confirmed***
+## Concerning Journal Examples 
 
 > ... *Day after day, I somehow wake up more tired than the day before. The air resists me like a syrup, and yet I can only stare at the ceiling while yearning for sleep to come over me.* ...
 
@@ -21,7 +23,7 @@ layout: default
 
 **Reasoning:** While the events happened in the past, it is unclear if the author's feelings are resolved about this today.  'Stressful traumatic event' would be a good label to select. 
 
-### Safe Journal Examples
+## Safe Journal Examples
 
 > ... *I became used to my little brother's panicked yells in the night.  Each time I thought that the night terrors would make him think twice about watching another scary movie, but he would always ask to rent another one.* ...
 

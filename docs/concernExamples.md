@@ -3,10 +3,6 @@ title: Concerning Examples
 layout: default
 ---
 
----
-#### ***<span style="color:red">Warning</span>: These examples are yet to be assessed and confirmed by mental health professionals.  Email Patrick (sublime@vt.edu) for changes/suggestions.  This message will be removed after the examples are confirmed***
----
-
 [<- Back to Task Instructions page](./labelHelperTask)
 
 ## Concerning Journal Examples 

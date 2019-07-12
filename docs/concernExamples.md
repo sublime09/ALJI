@@ -3,8 +3,6 @@ title: Concerning Examples
 layout: default
 ---
 
-[<- Back to Task Instructions page](./labelHelperTask)
-
 ## Concerning Journal Examples 
 
 > ... *Day after day, I somehow wake up more tired than the day before. The air resists me like a syrup, and yet I can only stare at the ceiling while yearning for sleep to come over me.* ...
@@ -24,5 +22,3 @@ layout: default
 > ... *I became used to my little brother's panicked yells in the night.  Each time I thought that the night terrors would make him think twice about watching another scary movie, but he would always ask to rent another one.* ...
 
 **Reasoning:** Since it is the brother instead of  the author experiencing the night terrors, there are no labels to check based off of these sentences.  It would be checked if these behaviors were upsetting the author. 
-
-[<- Back to Task Instructions page](./labelHelperTask)

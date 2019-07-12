@@ -3,7 +3,7 @@ title: Background of ALJI
 layout: default
 ---
 
-<!-- [<- Back to contribute page](./contribute) -->
+[<- Back to contribute page](./contribute)
 
 ## Project Details
 There are three major components that ALJI blends together: Expressive Writing, Machine Learning, and Human-Computer Interaction.
@@ -24,4 +24,4 @@ I am Patrick Sullivan, a graduate student within Virginia Tech’s Computer Scie
 
 > \[2\] Pennebaker, J. W., & Chung, C. K. (2011). Expressive writing and its links to mental and physical health. In H. S. Friedman (Ed.), ​ _Oxford handbook of health psychology_ ​ (pp.417- 437). New York, NY: Oxford University Press.
 
-<!-- [<- Back to contribute page](./contribute) -->
+[<- Back to contribute page](./contribute)

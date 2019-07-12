@@ -3,7 +3,7 @@ title: Concerning Examples
 layout: default
 ---
 
-<!-- [<- Back to Task Instructions page](./labelHelperTask) -->
+[<- Back to Task Instructions page](./labelHelperTask)
 
 ## Concerning Journal Examples 
 
@@ -25,4 +25,4 @@ layout: default
 
 **Reasoning:** Since it is the brother instead of  the author experiencing the night terrors, there are no labels to check based off of these sentences.  It would be checked if these behaviors were upsetting the author. 
 
-<!-- [<- Back to Task Instructions page](./labelHelperTask) -->
+[<- Back to Task Instructions page](./labelHelperTask)

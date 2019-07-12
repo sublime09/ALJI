@@ -3,7 +3,7 @@ title: Intro to ALJI
 layout: default
 ---
 
-<!-- [<- Back to contribute page](./contribute) -->
+[<- Back to contribute page](./contribute)
 
 ## Introduction to ALJI
 
@@ -15,7 +15,7 @@ The texts in the current dataset are publicly sourced from the ​Scholastic Awa
 
 The ALJI project is open-source to ensure transparency, encourage collaboration, and to respect the goals of the project. You can see all components and code related to the project here: [​https://github.com/sublime09/ALJI](​https://github.com/sublime09/ALJI)
 
-<!-- [<- Back to contribute page](./contribute) -->
+[<- Back to contribute page](./contribute)
 
 [-> Forward to Project Background page](./background)
 

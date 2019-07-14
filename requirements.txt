@@ -9,9 +9,8 @@
 # Label Helper:
 -r "Label Helper/requirements.txt"
 
+# Train Labels:
+-r "TrainLabels/requirements.txt"
 
 # Likely needed in future:
-# sklearn
-# pandas???
-# numpy
 # nltk

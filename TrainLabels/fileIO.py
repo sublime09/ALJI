@@ -1,86 +1,70 @@
 from config import *
 import os
-import json
+import csv
+import pandas as pd
 
-labelResultsFolder = "LabelResults"
+dirNameHere = os.path.dirname(__file__)
+labelResultsLoc = os.path.join(dirNameHere, "LabelResults")
+empathDataLoc = "..?AnalyzeEssays?EssayAnalysisResults?2019-2-4?EmpathAnalysis.csv"
+empathDataLoc = empathDataLoc.replace('?', os.path.sep)
+# empathDataLoc = os.path.join(empathDataLoc.split('?'))
+empathDataLoc = os.path.join(dirNameHere, empathDataLoc)
 
-def readResultsGen():
-	for fPath, fName in walkResultLabelFiles():
-		oneResults = readJSON(fPath)
-		oneResults['filename'] = fName
-		fPath = fPath.replace('/', os.path.sep)
-		pathSplit = fPath.split(os.path.sep)
-		oneResults['labeler'] = pathSplit[1]
-		gStr = pathSplit[2].replace("Labels.json", "")
-		gNum = int(gStr.replace("Group", ""))
-		oneResults['group'] = gNum
-		yield oneResults
+def getEmpathFrame():
+	assert os.path.exists(empathDataLoc)
+	empathFrame = pd.read_csv(empathDataLoc)
+	filenames = empathFrame.Filename.values
+	jNums = [f.split()[0].lstrip("Entry") for f in filenames]
+	empathFrame.insert(0, "jNum", pd.Series(jNums))
 
-def readJSON(filepath):
-	log.info("Reading JSON: %s", filepath)
-	with open(filepath, 'r', encoding="UTF-8") as fp:
-		return json.load(fp) #, indent=2)
+	# get cols in preferred order
+	cols = empathFrame.columns.tolist()
+	def colOrder(colName):
+		if colName in ["jNum", "Filename"]:
+			return 0
+		elif "emotion" in colName:
+			return 1
+		else: 
+			return 2
+	cols.sort(key=colOrder)
+	empathFrame = empathFrame[cols]
+	return empathFrame
 
-def walkResultLabelFiles():
-	walkPath = os.path.join(labelResultsFolder)
-	log.info("Walking JSONs on path: %s", walkPath)
-	for root, dirs, files in os.walk(walkPath):
+
+def getResultFrame():
+	csvFiles = list(walkFiles(labelResultsLoc, "csv"))
+	lilFrames = [csvToFrame(f) for f in csvFiles]
+	bigFrame = pd.concat(lilFrames)
+	return bigFrame
+
+def csvToFrame(csvPathAndName):
+	csvPath, csvName = csvPathAndName
+	# jNum = lrStrip(csvName, "ALJI j#", ".csv")
+	jNum = csvName.lstrip("ALJI j#").rstrip(".csv")
+	lilFrame = pd.read_csv(csvPath)
+	numRows = len(lilFrame['Username'])
+	jNumCol = pd.Series([jNum] * numRows)
+	lilFrame.insert(0, "jNum", jNumCol.values)
+	return lilFrame
+
+def walkFiles(path, ext):
+	'''Walks files on a path of a certain file extension'''
+	ext = "." + ext.lower()
+	for root, dirs, files in os.walk(path):
 		for fName in files:
-			if not fName.endswith(".json"):
-				continue
-			fPath = os.path.join(root, fName)
-			yield fPath, fName
+			if fName.lower().endswith(ext):
+				fPath = os.path.join(root, fName)
+				log.info("Found on walk: %s", fPath)
+				yield fPath, fName
 
-def readEssaysGen():
-	for fPath, fName in walkEssayFiles():
-		story = readFile(fPath)
-		yield Essay(fName, story)
-
-def writeEssaysCSV(essays):
-	csvLines = []
-	for ess in essays:
-		if len(csvLines) == 0:
-			csvLines.append(','.join(ess.genColNames()))
-		csvLines.append(','.join(ess.genRowValues()))
-	csvLines = '\n'.join(csvLines)
-	writeFile(Config.ANALYSIS_OUTPUT, csvLines)
-
-
-def walkEssayFiles():
-	walkPath = os.path.join(Config.ESSAYS_FOLDER)
-	log.info("Walking Essays on path: %s", walkPath)
-	for root, dirs, files in os.walk(walkPath):
-		for fName in files:
-			if not fName.startswith("Entry"):
-				continue
-			if not fName.endswith(".txt"):
-				continue
-			fPath = os.path.join(root, fName)
-			yield fPath, fName
-
-
-def readFile(filepath):
-	fileText = None
-	log.info("Reading File: %s", filepath)
-	with open(filepath, 'r', encoding="UTF-8") as file:
-		fileText = file.read()
-	return fileText
-
-
-def writeFile(filepath, content):
-	log.info("Writing File: %s", filepath)
-	print("Output file:", filepath)
-	dirPath, fileName = os.path.split(filepath)
-	os.makedirs(dirPath, exist_ok=True)
-	with open(filepath, 'w', encoding="UTF-8") as file:
-		file.write(content)
-
-if __name__ == '__main__':
+def testFileIO():
 	print("FileIO Trainer test:")
 	limit = 3
-	for resultD in readResultsGen():
-		piece = str(resultD)[:80]
-		print("Piece = ", piece)
+	for jNum, result in readResultsGen():
+		print("result=", result)
 		limit -= 1
 		if limit <= 0:
 			break
+
+if __name__ == '__main__':
+	testFileIO()

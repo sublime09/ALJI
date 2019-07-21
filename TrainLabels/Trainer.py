@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn import svm
+from sklearn import preprocessing
 from datetime import datetime, timezone
 
 # print(config.defaultLabels)
@@ -44,6 +45,12 @@ def main():
 	empathColsIndex = combFrame.columns.get_loc("emotional")
 	empathCols = combFrame.iloc[:, empathColsIndex:]
 	trainers = empathCols
+
+	scalar = preprocessing.MinMaxScaler(copy=False)
+	scalar.fit(trainers)
+	scalar.transform(trainers)
+	# print("trainers=", trainers, "", sep='\n')
+
 	target = combFrame['CGI-S'].astype('category')
 	# print("Empath Columns:", empathCols.columns.values)
 

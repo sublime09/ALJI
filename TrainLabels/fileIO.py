@@ -34,6 +34,7 @@ def getEmpathFrame():
 def getResultFrame():
 	csvFiles = list(walkFiles(labelResultsLoc, "csv"))
 	lilFrames = [csvToFrame(f) for f in csvFiles]
+	lilFrames = [f for f in lilFrames if not f.empty]
 	bigFrame = pd.concat(lilFrames)
 	return bigFrame
 
@@ -41,8 +42,9 @@ def csvToFrame(csvPathAndName):
 	csvPath, csvName = csvPathAndName
 	# jNum = lrStrip(csvName, "ALJI j#", ".csv")
 	jNum = csvName.lstrip("ALJI j#").rstrip(".csv")
+	print("Reading:", csvPath)
 	lilFrame = pd.read_csv(csvPath)
-	numRows = len(lilFrame['Username'])
+	numRows = len(lilFrame.index)
 	jNumCol = pd.Series([jNum] * numRows)
 	lilFrame.insert(0, "jNum", jNumCol.values)
 	return lilFrame

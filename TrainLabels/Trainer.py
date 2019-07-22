@@ -17,28 +17,30 @@ def main():
 	resultsFrame = fileIO.getResultFrame()
 	# print('resultsFrame = ', resultsFrame, sep='\n')
 	empathFrame = fileIO.getEmpathFrame()
+	# resultsFrame['color'] = ['green'] * len(resultsFrame.index)
 
-	numAutoLabel = min(50, len(resultsFrame.index)//5 + 1)
-	# numAutoLabel = int(0.15 * len(empathFrame.index))
-	happyFrame = empathFrame.copy()
-	sentis = happyFrame.positive_emotion - happyFrame.negative_emotion
-	happyFrame.insert(2, 'senti', sentis)
-	happyFrame.sort_values(by='senti', ascending=False, inplace=True)
-	happiestJnums = happyFrame.head(numAutoLabel).jNum.values
+	# numAutoLabel = min(50, len(resultsFrame.index)//5 + 1)
+	numAutoLabel = 0
+	if numAutoLabel > 0:
+		happyFrame = empathFrame.copy()
+		sentis = happyFrame.positive_emotion - happyFrame.negative_emotion
+		happyFrame.insert(2, 'senti', sentis)
+		happyFrame.sort_values(by='senti', ascending=False, inplace=True)
+		happiestJnums = happyFrame.head(numAutoLabel).jNum.values
 
-	massFrame = pd.DataFrame(columns=resultsFrame.columns)
-	l = len(happiestJnums)
-	now = datetime.now(tz=timezone.utc).strftime('%Y/%m/%d %I:%M:%S %p %Z') # + datetime.time
-	massFrame.Timestamp = [now] * l
-	massFrame['CGI-S'] = [1] * l
-	massFrame['Concern Labels'] = [None] * l
-	massFrame['Custom Concern Labels'] = [None] * l
-	massFrame['Username'] = ['autoLabel@autoLabel.autoLabel'] * l
-	massFrame.jNum = happiestJnums
-	# print('massFrame = ', massFrame, sep='\n')
+		massFrame = pd.DataFrame(columns=resultsFrame.columns)
+		l = len(happiestJnums)
+		now = datetime.now(tz=timezone.utc).strftime('%Y/%m/%d %I:%M:%S %p %Z')
+		massFrame.Timestamp = [now] * l
+		massFrame['CGI-S'] = [1] * l
+		massFrame['Concern Labels'] = [None] * l
+		massFrame['Custom Concern Labels'] = [None] * l
+		massFrame['Username'] = ['autoLabel@autoLabel.autoLabel'] * l
+		# massFrame['color'] = ['yellow'] * l
+		massFrame.jNum = happiestJnums
 
-	if not massFrame.empty:
-		resultsFrame = pd.concat((resultsFrame, massFrame))
+		if not massFrame.empty:
+			resultsFrame = pd.concat((resultsFrame, massFrame))
 
 	combFrame = resultsFrame.merge(empathFrame, on='jNum')
 

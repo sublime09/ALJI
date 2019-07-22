@@ -55,7 +55,7 @@ def main():
 	target = combFrame['CGI-S'].astype('category')
 	# print("Empath Columns:", *empathCols.columns.values)
 
-	model = svm.LinearSVC()
+	model = svm.LinearSVC(C=1)
 	model.fit(trainers, target)
 	print(model)
 	# In problems where it is desired to give more importance to certain classes 
@@ -71,7 +71,7 @@ def main():
 	evalFrame.insert(0, "predicted", predicted)
 	print('evalFrame:\n', evalFrame[['jNum', 'target', 'predicted']])
 
-	plotCols = ['negative_emotion', 'CGI-S']
+	plotCols = ['pain', 'CGI-S']
 	plotFrame = combFrame[plotCols]
 	plt.ion() #interactive mode to run in background
 	scatterPlotFrame(plotFrame)

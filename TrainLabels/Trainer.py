@@ -15,7 +15,6 @@ from datetime import datetime, timezone
 def main():
 	print("Started Trainer main....")
 	resultsFrame = fileIO.getResultFrame()
-	# print('resultsFrame = ', resultsFrame, sep='\n')
 	empathFrame = fileIO.getEmpathFrame()
 	# resultsFrame['color'] = ['green'] * len(resultsFrame.index)
 
@@ -43,6 +42,7 @@ def main():
 			resultsFrame = pd.concat((resultsFrame, massFrame))
 
 	combFrame = resultsFrame.merge(empathFrame, on='jNum')
+	# print(combFrame[['Username', 'jNum']]) # to see contributors
 
 	empathColsIndex = combFrame.columns.get_loc("emotional")
 	empathCols = combFrame.iloc[:, empathColsIndex:]
@@ -51,10 +51,9 @@ def main():
 	scalar = preprocessing.MinMaxScaler(copy=False)
 	scalar.fit(trainers)
 	scalar.transform(trainers)
-	# print("trainers=", trainers, "", sep='\n')
 
 	target = combFrame['CGI-S'].astype('category')
-	# print("Empath Columns:", empathCols.columns.values)
+	# print("Empath Columns:", *empathCols.columns.values)
 
 	model = svm.LinearSVC()
 	model.fit(trainers, target)

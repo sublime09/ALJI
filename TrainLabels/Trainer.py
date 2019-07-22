@@ -82,7 +82,6 @@ def main():
 	print("Done with main")
 
 def scatterPlotFrame(plotFrame, trendline=True):
-	print(plotFrame)
 	plotCols = plotFrame.columns.values
 	assert len(plotCols) >= 2
 	xLabel, yLabel = plotCols[:2]
@@ -93,11 +92,10 @@ def scatterPlotFrame(plotFrame, trendline=True):
 	if trendline:
 		x = plotFrame[xLabel]
 		y = plotFrame[yLabel]
-		z = np.poly1d(np.polyfit(x, y, 1))
-		# print("Trendline:", z)
+		trendline = np.poly1d(np.polyfit(x, y, 1))
 		newX = np.arange(0, 1, 0.001)
 		plt.autoscale(False)
-		plt.plot(newX, z(newX), color="yellow")
+		plt.plot(newX, trendline(newX), color="yellow")
 
 
 if __name__ == '__main__':

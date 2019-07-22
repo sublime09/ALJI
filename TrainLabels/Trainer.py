@@ -72,13 +72,11 @@ def main():
 
 	plotCols = ['negative_emotion', 'CGI-S']
 	plotFrame = combFrame[plotCols]
+	plt.ion() #interactive mode to run in background
 	scatterPlotFrame(plotFrame)
 	plt.show()
 
-	resp = input("Press enter to close")
-	plt.cla()
-	plt.exit()
-
+	resp = input("Press Enter to close...")
 	print("Done with main")
 
 def scatterPlotFrame(plotFrame, trendline=True):

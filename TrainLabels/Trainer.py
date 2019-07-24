@@ -16,10 +16,10 @@ def main():
 	print("Started Trainer main....")
 	resultsFrame = fileIO.getResultFrame()
 	empathFrame = fileIO.getEmpathFrame()
-	# resultsFrame['color'] = ['green'] * len(resultsFrame.index)
+	resultsFrame['color'] = ['blue'] * len(resultsFrame.index)
 
 	# numAutoLabel = min(50, len(resultsFrame.index)//5 + 1)
-	numAutoLabel = 0
+	numAutoLabel = 5
 	if numAutoLabel > 0:
 		happyFrame = empathFrame.copy()
 		sentis = happyFrame.positive_emotion - happyFrame.negative_emotion
@@ -35,7 +35,7 @@ def main():
 		massFrame['Concern Labels'] = [None] * l
 		massFrame['Custom Concern Labels'] = [None] * l
 		massFrame['Username'] = ['autoLabel@autoLabel.autoLabel'] * l
-		# massFrame['color'] = ['yellow'] * l
+		massFrame['color'] = ['teal'] * l
 		massFrame.jNum = happiestJnums
 
 		if not massFrame.empty:
@@ -71,7 +71,7 @@ def main():
 	evalFrame.insert(0, "predicted", predicted)
 	print('evalFrame:\n', evalFrame[['jNum', 'target', 'predicted']])
 
-	plotCols = ['pain', 'CGI-S']
+	plotCols = ['pain', 'CGI-S', 'color']
 	plotFrame = combFrame[plotCols]
 	plt.ion() #interactive mode to run in background
 	scatterPlotFrame(plotFrame)
@@ -84,7 +84,8 @@ def scatterPlotFrame(plotFrame, trendline=True):
 	plotCols = plotFrame.columns.values
 	assert len(plotCols) >= 2
 	xLabel, yLabel = plotCols[:2]
-	plt.scatter(xLabel, yLabel, data=plotFrame)
+	# print("plotFrame = \n", plotFrame)
+	plt.scatter(xLabel, yLabel, color=plotFrame.color, data=plotFrame)
 	plt.xlabel(xLabel)
 	plt.ylabel(yLabel)
 	plt.title(xLabel + ' versus ' + yLabel)
@@ -94,7 +95,7 @@ def scatterPlotFrame(plotFrame, trendline=True):
 		trendline = np.poly1d(np.polyfit(x, y, 1))
 		newX = np.arange(0, 1, 0.001)
 		plt.autoscale(False)
-		plt.plot(newX, trendline(newX), color="yellow")
+		plt.plot(newX, trendline(newX), color="orange")
 
 
 if __name__ == '__main__':

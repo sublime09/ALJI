@@ -65,11 +65,20 @@ def main():
 	# print("Target:", target)
 	# print("Predicted:", predict, '\n')
 
-	evalFrame = pd.DataFrame(trainers)
-	evalFrame.insert(0, "jNum", combFrame.jNum)
-	evalFrame.insert(0, "target", target)
-	evalFrame.insert(0, "predicted", predicted)
-	print('evalFrame:\n', evalFrame[['jNum', 'target', 'predicted']])
+	evalFrame = pd.DataFrame()
+	# evalFrame['jNum'] = combFrame.jNum
+	evalFrame["jNum"] = combFrame.jNum
+	evalFrame["target"] = target
+	evalFrame["predicted"] = predicted
+	numTries = len(evalFrame.index)
+	incorrects = evalFrame.target.ne(evalFrame.predicted)
+	incorrects = evalFrame[incorrects]
+	numCorrects = numTries - len(incorrects.index)
+	pctCorrect = (100.0 * numCorrects) / numTries
+	print("Predictions: %d \t Pct Correct: %.2f%%" % (numTries, pctCorrect))
+	if not incorrects.empty:
+		print("Incorrect Predictions", incorrects, sep='\n')
+		# TODO: color incorrect predictions?
 
 	plotCols = ['pain', 'CGI-S', 'color']
 	plotFrame = combFrame[plotCols]

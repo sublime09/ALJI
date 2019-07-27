@@ -37,9 +37,8 @@ def main():
 	combFrame = resultsFrame.merge(empathFrame, on='jNum')
 	# print(combFrame[['Username', 'jNum']]) # to see contributors
 
-	empathColsIndex = combFrame.columns.get_loc("emotional")
-	empathCols = combFrame.iloc[:, empathColsIndex:]
-	trainers = empathCols
+	trainers = combFrame[empathCols]
+	target = combFrame['CGI-S'].astype('int')
 
 	scalar = preprocessing.MinMaxScaler(copy=False)
 	scalar.fit(trainers)

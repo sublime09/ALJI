@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn import svm
 from sklearn import preprocessing
+from sklearn.model_selection import GridSearchCV
 
 # print(config.defaultLabels)
 
@@ -44,18 +45,14 @@ def main():
 	scalar.fit(trainers)
 	scalar.transform(trainers)
 
-	target = combFrame['CGI-S'].astype('category')
-	# print("Empath Columns:", *empathCols.columns.values)
+	# baseModel = svm.SVC(kernel='linear')
+	baseModel = svm.SVR(kernel='linear')
+	# from sklearn import linear_model
+	# baseModel = linear_model.Ridge()
+	print("BaseModel =", str(baseModel)[:50], "...")
 
-	model = svm.LinearSVC(C=1)
-	model.fit(trainers, target)
-	print(model)
 	# In problems where it is desired to give more importance to certain classes 
 	# or certain individual samples keywords class_weight and sample_weight can be used.
-	predicted = model.predict(trainers)
-	# print("Trainers:", trainers)
-	# print("Target:", target)
-	# print("Predicted:", predict, '\n')
 
 	parameters = dict()
 	parameters['C'] = [pow(10, i) for i in range(0, 4)]
@@ -67,6 +64,17 @@ def main():
 	toRemove = [k for k in parameters if k not in usableParams]
 	for badKey in toRemove:
 		del parameters[badKey]
+
+	'''Train / cross validate:'''
+	clf = GridSearchCV(baseModel, parameters, cv=3)
+	print("Cross Validation using", clf.cv, "folds")
+	print("Searching Params:", parameters)
+	clf.fit(trainers, target)
+	crossValFrame = pd.DataFrame(clf.cv_results_)
+	printCols = 'rank_test_score mean_test_score std_test_score params'.split()
+	print(crossValFrame[printCols])
+	print("Chosen Model =", str(clf.best_estimator_), "...")
+	predicted = clf.predict(trainers)
 	evalFrame = pd.DataFrame()
 	# evalFrame['jNum'] = combFrame.jNum
 	evalFrame["jNum"] = combFrame.jNum

@@ -8,38 +8,33 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn import svm
 from sklearn import preprocessing
-from datetime import datetime, timezone
 
 # print(config.defaultLabels)
 
 def main():
 	print("Started Trainer main....")
 	resultsFrame = fileIO.getResultFrame()
+	print("Read", len(resultsFrame.index), "Participant results ...")
 	empathFrame = fileIO.getEmpathFrame()
 	resultsFrame['color'] = ['blue'] * len(resultsFrame.index)
+	print("Read", len(empathFrame.index), "Empath analysis results ...")
+	empathCols = empathFrame.columns.values[2:]
 
-	# numAutoLabel = min(50, len(resultsFrame.index)//5 + 1)
 	numAutoLabel = 5
 	if numAutoLabel > 0:
-		happyFrame = empathFrame.copy()
-		sentis = happyFrame.positive_emotion - happyFrame.negative_emotion
-		happyFrame.insert(2, 'senti', sentis)
-		happyFrame.sort_values(by='senti', ascending=False, inplace=True)
-		happiestJnums = happyFrame.head(numAutoLabel).jNum.values
-
-		massFrame = pd.DataFrame(columns=resultsFrame.columns)
-		l = len(happiestJnums)
-		now = datetime.now(tz=timezone.utc).strftime('%Y/%m/%d %I:%M:%S %p %Z')
-		massFrame.Timestamp = [now] * l
-		massFrame['CGI-S'] = [1] * l
-		massFrame['Concern Labels'] = [None] * l
-		massFrame['Custom Concern Labels'] = [None] * l
-		massFrame['Username'] = ['autoLabel@autoLabel.autoLabel'] * l
 		massFrame['color'] = ['teal'] * l
-		massFrame.jNum = happiestJnums
+		cols = "negative_emotion medical_emergency pain anger shame torment".split()
+		negSenti = empathFrame[cols].sum(axis=1).sort_values()
+		negSenti = negSenti.head(numAutoLabel).index
+		happyFrame = empathFrame.iloc[negSenti]
 
+		massFrame = pd.DataFrame()
+		massFrame['jNum'] = happyFrame.jNum.values
+		massFrame['Timestamp'] = "9999/11/11 11:11:11 AM EST"
+		massFrame['CGI-S'] = 1
+		massFrame['Username'] = 'AUTOLABELED'
 		if not massFrame.empty:
-			resultsFrame = pd.concat((resultsFrame, massFrame))
+			resultsFrame = pd.concat((resultsFrame, massFrame), sort=False)
 
 	combFrame = resultsFrame.merge(empathFrame, on='jNum')
 	# print(combFrame[['Username', 'jNum']]) # to see contributors

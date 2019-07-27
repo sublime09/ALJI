@@ -58,6 +58,16 @@ def main():
 	# print("Target:", target)
 	# print("Predicted:", predict, '\n')
 
+	parameters = dict()
+	parameters['C'] = [pow(10, i) for i in range(0, 4)]
+	parameters['alpha'] = [pow(10, i) for i in range(-3, 1)]
+	# parameters['epsilon'] = [pow(10, i) for i in range(-2, 2)]
+	# parameters['degree'] = range(2, 5)
+	# parameters['gamma'] = [pow(5, i) for i in range(-3, 3)]
+	usableParams = baseModel.get_params().keys()
+	toRemove = [k for k in parameters if k not in usableParams]
+	for badKey in toRemove:
+		del parameters[badKey]
 	evalFrame = pd.DataFrame()
 	# evalFrame['jNum'] = combFrame.jNum
 	evalFrame["jNum"] = combFrame.jNum

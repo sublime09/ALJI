@@ -16,13 +16,11 @@ def main():
 	resultsFrame = fileIO.getResultFrame()
 	print("Read", len(resultsFrame.index), "Participant results ...")
 	empathFrame = fileIO.getEmpathFrame()
-	resultsFrame['color'] = ['blue'] * len(resultsFrame.index)
 	print("Read", len(empathFrame.index), "Empath analysis results ...")
 	empathCols = empathFrame.columns.values[2:]
 
 	numAutoLabel = 5
 	if numAutoLabel > 0:
-		massFrame['color'] = ['teal'] * l
 		cols = "negative_emotion medical_emergency pain anger shame torment".split()
 		negSenti = empathFrame[cols].sum(axis=1).sort_values()
 		negSenti = negSenti.head(numAutoLabel).index
@@ -75,8 +73,13 @@ def main():
 		print("Incorrect Predictions", incorrects, sep='\n')
 		# TODO: color incorrect predictions?
 
-	plotCols = ['pain', 'CGI-S', 'color']
+
+	'''Plotting / Visualization:'''
+	plotCols = ['medical_emergency', 'CGI-S']
 	plotFrame = combFrame[plotCols]
+	plotFrame['color'] = 'blue'
+	autolabeled = combFrame.Username == 'AUTOLABELED'
+	plotFrame.loc[autolabeled, "color"] = 'teal'
 	plt.ion() #interactive mode to run in background
 	scatterPlotFrame(plotFrame)
 	plt.show()

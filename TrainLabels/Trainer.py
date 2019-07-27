@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn import svm
+from sklearn import linear_model
 from sklearn import preprocessing
 from sklearn.model_selection import GridSearchCV
 
@@ -36,7 +37,7 @@ def main():
 			resultsFrame = pd.concat((resultsFrame, massFrame), sort=False)
 
 	combFrame = resultsFrame.merge(empathFrame, on='jNum')
-	# print(combFrame[['Username', 'jNum']]) # to see contributors
+	# print(combFrame[['jNum', 'CGI-S']]) # to see contributors
 
 	trainers = combFrame[empathCols]
 	target = combFrame['CGI-S'].astype('int')
@@ -47,7 +48,6 @@ def main():
 
 	# baseModel = svm.SVC(kernel='linear')
 	baseModel = svm.SVR(kernel='linear')
-	# from sklearn import linear_model
 	# baseModel = linear_model.Ridge()
 	print("BaseModel =", str(baseModel)[:50], "...")
 
@@ -75,8 +75,9 @@ def main():
 	print(crossValFrame[printCols])
 	print("Chosen Model =", str(clf.best_estimator_), "...")
 	predicted = clf.predict(trainers)
+
+	'''Evaluate: '''
 	evalFrame = pd.DataFrame()
-	# evalFrame['jNum'] = combFrame.jNum
 	evalFrame["jNum"] = combFrame.jNum
 	evalFrame["target"] = target
 	evalFrame["predicted"] = predicted
@@ -89,7 +90,6 @@ def main():
 	if not incorrects.empty:
 		print("Incorrect Predictions", incorrects, sep='\n')
 		# TODO: color incorrect predictions?
-
 
 	'''Plotting / Visualization:'''
 	plotCols = ['medical_emergency', 'CGI-S']

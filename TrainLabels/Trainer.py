@@ -81,8 +81,9 @@ def main():
 	evalFrame["jNum"] = combFrame.jNum
 	evalFrame["target"] = target
 	evalFrame["predicted"] = predicted
+	evalFrame["rounded"] = predicted.round().astype(target.dtype)
 	numTries = len(evalFrame.index)
-	incorrects = evalFrame.target.ne(evalFrame.predicted)
+	incorrects = evalFrame.target.ne(evalFrame.rounded)
 	incorrects = evalFrame[incorrects]
 	numCorrects = numTries - len(incorrects.index)
 	pctCorrect = (100.0 * numCorrects) / numTries

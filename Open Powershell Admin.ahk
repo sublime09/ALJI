@@ -3,16 +3,31 @@
 SetKeyDelay, 60
 BlockInput, On
 
-; WinGet, SavedWinId, ID, A ;Save our current active window
+if mustOpenWindow("ALJI") {
+	Send {AltDown}f{AltUp}sa
+}
 
-; if WinExist("ALJI") {
-	; MsgBox "Found ALJI window..."
-	; WinActivate
-Send {AltDown}f{AltUp}sa
-; } else {
-; 	MsgBox "No ALJI window found..."
-; }
+if A_IsAdmin {
+	if mustOpenWindow("Administrator: Windows PowerShell") {
+		SetKeyDelay, 10
+		Send env/Scripts/activate{Enter}
+	} 
+} else {
+	MsgBox, No admin privlidges.  Must run env/Scripts/activate
+}
 
-; WinActivate ahk_id %SavedWinId%  ;Restore original window
+mustOpenWindow(wName) {
+	waitSecs := 2
+	WinWait, %wName%, , waitSecs 
+	if WinExist(wName){
+		WinActivate
+		WinWaitActive %wName%, , waitSecs
+		return True
+	} else {
+		MsgBox No %wName% window found... exiting...
+		ExitApp 1
+	}
+}
+
 BlockInput, Off
 ExitApp

@@ -13,6 +13,10 @@ from sklearn.model_selection import GridSearchCV
 
 # print(config.defaultLabels)
 
+# TODO: DummyRegressor, Lasso, ElasticNet, SVR(kernel='rbf')
+# TODO: EnsembleRegressors?  n_estimators=100
+# TODO: Label Propagation
+
 def main():
 	print("Started Trainer main....")
 	resultsFrame = fileIO.getResultFrame()
@@ -20,6 +24,7 @@ def main():
 	empathFrame = fileIO.getEmpathFrame()
 	print("Read", len(empathFrame.index), "Empath analysis results ...")
 	empathCols = empathFrame.columns.values[2:]
+	assert len(empathCols) == 194
 
 	numAutoLabel = 5
 	if numAutoLabel > 0:
@@ -102,8 +107,6 @@ def main():
 	scatterPlotFrame(plotFrame)
 	plt.show()
 
-	resp = input("Press Enter to close...")
-	print("Done with main")
 
 def scatterPlotFrame(plotFrame, trendline=True):
 	plotCols = plotFrame.columns.values
@@ -125,3 +128,5 @@ def scatterPlotFrame(plotFrame, trendline=True):
 
 if __name__ == '__main__':
 	main()
+	resp = input("Press Enter to close...")
+	print("Done with main")

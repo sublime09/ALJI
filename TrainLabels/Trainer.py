@@ -1,21 +1,44 @@
-import fileIO
-import config
-import os
+print("Importing...", end='')
+import fileIO, config
 # from inspect import signature, getmembers
 # pprint(signature(pprint))
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from sklearn import svm
-from sklearn import linear_model
-from sklearn import preprocessing
+from sklearn.dummy import DummyRegressor
+from sklearn.svm import SVR, SVC
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.model_selection import GridSearchCV
+print(" done!")
 
 # print(config.defaultLabels)
 
 # TODO: DummyRegressor, Lasso, ElasticNet, SVR(kernel='rbf')
 # TODO: EnsembleRegressors?  n_estimators=100
 # TODO: Label Propagation
+
+''' RUNNING OPTIONS FOR MODELS '''
+visualizeCGI = False
+labelSpreadingAlpha = None
+numAutoLabel = 10 # worse than label spreading?
+# scalar = MinMaxScaler(copy=False)
+scalar = StandardScaler(copy=False)
+# baseModel = DummyRegressor()        # r= -0.446
+# baseModel = SVC(kernel='linear')    # 
+# baseModel = SVR(kernel='linear')    # r= -0.103
+# baseModel = Lasso()                 # r= -0.120 WARNINGS
+baseModel = ElasticNet()              # r= -0.121 WARNINGS
+# baseModel = Ridge()                 # r= -0.076
+# baseModel = RandomForestRegressor() # r= -0.218 to -0.323 random
+params = dict()
+params['C'] = [pow(10, i) for i in range(-3, 4)]
+params['alpha'] = [pow(10, i) for i in range(-3, 1)]
+params['n_estimators'] = [pow(5, i) for i in range(1, 5)]
+# params['epsilon'] = [pow(10, i) for i in range(-2, 2)]
+# params['degree'] = range(2, 5)
+# params['gamma'] = [pow(5, i) for i in range(-3, 3)]
 
 def main():
 	print("Started Trainer main....")
@@ -26,7 +49,6 @@ def main():
 	empathCols = empathFrame.columns.values[2:]
 	assert len(empathCols) == 194
 
-	numAutoLabel = 5
 	if numAutoLabel > 0:
 		cols = "negative_emotion medical_emergency pain anger shame torment".split()
 		negSenti = empathFrame[cols].sum(axis=1).sort_values()
@@ -47,33 +69,23 @@ def main():
 	trainers = combFrame[empathCols]
 	target = combFrame['CGI-S'].astype('int')
 
-	scalar = preprocessing.MinMaxScaler(copy=False)
 	scalar.fit(trainers)
 	scalar.transform(trainers)
 
-	# baseModel = svm.SVC(kernel='linear')
-	baseModel = svm.SVR(kernel='linear')
-	# baseModel = linear_model.Ridge()
 	print("BaseModel =", str(baseModel)[:50], "...")
 
 	# In problems where it is desired to give more importance to certain classes 
 	# or certain individual samples keywords class_weight and sample_weight can be used.
 
-	parameters = dict()
-	parameters['C'] = [pow(10, i) for i in range(0, 4)]
-	parameters['alpha'] = [pow(10, i) for i in range(-3, 1)]
-	# parameters['epsilon'] = [pow(10, i) for i in range(-2, 2)]
-	# parameters['degree'] = range(2, 5)
-	# parameters['gamma'] = [pow(5, i) for i in range(-3, 3)]
 	usableParams = baseModel.get_params().keys()
-	toRemove = [k for k in parameters if k not in usableParams]
+	toRemove = [k for k in params if k not in usableParams]
 	for badKey in toRemove:
-		del parameters[badKey]
+		del params[badKey]
 
 	'''Train / cross validate:'''
-	clf = GridSearchCV(baseModel, parameters, cv=3)
+	clf = GridSearchCV(baseModel, params, cv=6)
 	print("Cross Validation using", clf.cv, "folds")
-	print("Searching Params:", parameters)
+	print("Searching Params:", params)
 	clf.fit(trainers, target)
 	crossValFrame = pd.DataFrame(clf.cv_results_)
 	printCols = 'rank_test_score mean_test_score std_test_score params'.split()
@@ -128,5 +140,7 @@ def scatterPlotFrame(plotFrame, trendline=True):
 
 if __name__ == '__main__':
 	main()
-	resp = input("Press Enter to close...")
+	if visualizeCGI:
+		resp = input("Press Enter to close...")
+	plt.close()
 	print("Done with main")

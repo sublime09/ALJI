@@ -48,6 +48,7 @@ def main():
 	print("Read", len(empathFrame.index), "Empath analysis results ...")
 	empathCols = empathFrame.columns.values[2:]
 	assert len(empathCols) == 194
+	resultsFrame['color'] = 'blue'
 
 	if numAutoLabel > 0:
 		cols = "negative_emotion medical_emergency pain anger shame torment".split()
@@ -60,15 +61,25 @@ def main():
 		massFrame['Timestamp'] = "9999/11/11 11:11:11 AM EST"
 		massFrame['CGI-S'] = 1
 		massFrame['Username'] = 'AUTOLABELED'
+		massFrame['color'] = 'teal'
 		if not massFrame.empty:
 			resultsFrame = pd.concat((resultsFrame, massFrame), sort=False)
 
-	combFrame = resultsFrame.merge(empathFrame, on='jNum')
-	# print(combFrame[['jNum', 'CGI-S']]) # to see contributors
+	# empathFrame['CGI-S'] = -1 # TODO on label spreading
+	combFrame = resultsFrame.merge(empathFrame, on='jNum') # WORKs GOOD
 
-	trainers = combFrame[empathCols]
+	# print(combFrame[['jNum', 'CGI-S', 'Username']]) # to see contributors
+
+	'''Plotting / Visualization:'''
+	plotCols = ['medical_emergency', 'CGI-S', 'color']
+	plotFrame = combFrame[plotCols].copy()
+	plt.ion() #interactive mode to run in background
+	if visualizeCGI:
+		scatterPlot(plotFrame, 'medical_emergency', 'CGI-S')
+
+	'''Select target and scale trainers'''
 	target = combFrame['CGI-S'].astype('int')
-
+	trainers = combFrame[empathCols]
 	scalar.fit(trainers)
 	scalar.transform(trainers)
 
@@ -90,7 +101,7 @@ def main():
 	crossValFrame = pd.DataFrame(clf.cv_results_)
 	printCols = 'rank_test_score mean_test_score std_test_score params'.split()
 	print(crossValFrame[printCols])
-	print("Chosen Model =", str(clf.best_estimator_), "...")
+	print("Chosen Model =", str(clf.best_estimator_)[:50], "...")
 	predicted = clf.predict(trainers)
 
 	'''Evaluate: '''
@@ -106,36 +117,27 @@ def main():
 	pctCorrect = (100.0 * numCorrects) / numTries
 	print("Predictions: %d \t Pct Correct: %.2f%%" % (numTries, pctCorrect))
 	if not incorrects.empty:
-		print("Incorrect Predictions", incorrects, sep='\n')
+		pass
+		# print("Some Incorrect Predictions: ", incorrects.tail(7), sep='\n')
+		# print("Predicted CGI-S:", incorrects.predicted.describe())
 		# TODO: color incorrect predictions?
 
-	'''Plotting / Visualization:'''
-	plotCols = ['medical_emergency', 'CGI-S']
-	plotFrame = combFrame[plotCols]
-	plotFrame['color'] = 'blue'
-	autolabeled = combFrame.Username == 'AUTOLABELED'
-	plotFrame.loc[autolabeled, "color"] = 'teal'
-	plt.ion() #interactive mode to run in background
-	scatterPlotFrame(plotFrame)
-	plt.show()
+	
 
-
-def scatterPlotFrame(plotFrame, trendline=True):
-	plotCols = plotFrame.columns.values
-	assert len(plotCols) >= 2
-	xLabel, yLabel = plotCols[:2]
-	# print("plotFrame = \n", plotFrame)
-	plt.scatter(xLabel, yLabel, color=plotFrame.color, data=plotFrame)
-	plt.xlabel(xLabel)
-	plt.ylabel(yLabel)
-	plt.title(xLabel + ' versus ' + yLabel)
-	if trendline:
-		x = plotFrame[xLabel]
-		y = plotFrame[yLabel]
+def scatterPlot(plotFrame, xCol, yCol, trendline=True):
+	x = plotFrame[xCol]
+	y = plotFrame[yCol]
+	colors = plotFrame.color
+	plt.scatter(x=x, y=y, c=colors)
+	plt.xlabel(xCol)
+	plt.ylabel(yCol)
+	plt.title(xCol + ' versus ' + yCol)
+	if trendline is not None:
 		trendline = np.poly1d(np.polyfit(x, y, 1))
-		newX = np.arange(0, 1, 0.001)
+		newX = np.arange(0, 1, 0.01)
 		plt.autoscale(False)
 		plt.plot(newX, trendline(newX), color="orange")
+	plt.show()
 
 
 if __name__ == '__main__':

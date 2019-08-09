@@ -1,4 +1,4 @@
-print("Importing...", end='')
+print("Importing...", end='', flush=True)
 import fileIO, config
 # from inspect import signature, getmembers
 # pprint(signature(pprint))
@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.dummy import DummyRegressor
-from sklearn.svm import SVR, SVC
+from sklearn.svm import SVR
 from sklearn.linear_model import Ridge, Lasso, ElasticNet
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
@@ -18,6 +18,7 @@ print(" done!")
 # TODO: DummyRegressor, Lasso, ElasticNet, SVR(kernel='rbf')
 # TODO: EnsembleRegressors?  n_estimators=100
 # TODO: Label Propagation
+# baseModel = SVC(kernel='linear')    # NEEDED?
 
 ''' RUNNING OPTIONS FOR MODELS '''
 visualizeCGI = False
@@ -26,7 +27,6 @@ numAutoLabel = 10 # worse than label spreading?
 # scalar = MinMaxScaler(copy=False)
 scalar = StandardScaler(copy=False)
 # baseModel = DummyRegressor()        # r= -0.446
-# baseModel = SVC(kernel='linear')    # 
 # baseModel = SVR(kernel='linear')    # r= -0.103
 # baseModel = Lasso()                 # r= -0.120 WARNINGS
 baseModel = ElasticNet()              # r= -0.121 WARNINGS

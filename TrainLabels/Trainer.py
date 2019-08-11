@@ -138,6 +138,19 @@ def scatterPlot(plotFrame, xCol, yCol, trendline=True):
 		plt.plot(newX, trendline(newX), color="orange")
 	plt.show()
 
+def findOutliers(combFrame):
+	print("Possible outliers:")
+	lowballs = (combFrame['medical_emergency'] / combFrame['CGI-S']) < (0.001/1.3)
+	highballs = (combFrame['CGI-S'] / combFrame['medical_emergency']) > (6/0.0025)
+	outliers = lowballs | highballs
+	print(combFrame[outliers][['jNum', 'Username', 'CGI-S', 'medical_emergency']])
+
+def reduceWithPCA(frame, n_components):
+	from sklearn import decomposition
+	pca = decomposition.PCA(n_components=n_components)
+	pca.fit(frame)
+	return pca.transform(trainers)
+
 
 if __name__ == '__main__':
 	main()

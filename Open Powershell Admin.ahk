@@ -1,19 +1,22 @@
 #NoEnv
 #SingleInstance force
-SetKeyDelay, 60
-BlockInput, On
+SendMode, Input
 
 if mustOpenWindow("ALJI") {
+	SetKeyDelay, 60
 	Send {AltDown}f{AltUp}sa
 }
 
-if A_IsAdmin {
-	if mustOpenWindow("Administrator: Windows PowerShell") {
+if mustOpenWindow("Administrator: Windows PowerShell") {
+	winWidth = 400
+	xPos = A_ScreenWidth - winWidth
+	WinMove, xPos, 0, winWidth, A_ScreenHeight+50
+	if A_IsAdmin {
 		SetKeyDelay, 10
 		Send env/Scripts/activate{Enter}
+	} else {
+		MsgBox, No admin privlidges.  Must run env/Scripts/activate
 	} 
-} else {
-	MsgBox, No admin privlidges.  Must run env/Scripts/activate
 }
 
 mustOpenWindow(wName) {
@@ -29,5 +32,4 @@ mustOpenWindow(wName) {
 	}
 }
 
-BlockInput, Off
 ExitApp

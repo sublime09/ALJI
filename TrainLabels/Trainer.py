@@ -1,43 +1,48 @@
-print("Importing...", end='', flush=True)
-import fileIO, config
-# from inspect import signature, getmembers
-# pprint(signature(pprint))
+print("Importing Numpy...", end='', flush=True)
 import numpy as np
+print("PyPlot...", end='', flush=True)
 import matplotlib.pyplot as plt
+print("Pandas...", end='', flush=True)
 import pandas as pd
-from sklearn.dummy import DummyRegressor
-from sklearn.svm import SVR
-from sklearn.linear_model import Ridge, Lasso, ElasticNet
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
-from sklearn.model_selection import GridSearchCV
-print(" done!")
+print("Sklearn...", end='', flush=True)
+from sklearn import preprocessing, model_selection
+from sklearn import dummy, svm, linear_model, ensemble
+print("ALJI code...", end='', flush=True)
+import fileIO, config
+from ModelComparer import ModelComparer
+print("done!")
 
+# TODO: Label Propagation NAH
+# TODO: sample weights: 'class_weight' and 'sample_weight' can be used
 
-# TODO: DummyRegressor, Lasso, ElasticNet, SVR(kernel='rbf')
-# TODO: EnsembleRegressors?  n_estimators=100
-# TODO: Label Propagation
-# baseModel = SVC(kernel='linear')    # NEEDED?
+# baseModel = svm.LinearSVC()    # NEEDED?
 
 ''' RUNNING OPTIONS FOR MODELS '''
 visualizeCGI = False
 labelSpreadingAlpha = None
-numAutoLabel = 10 # worse than label spreading?
-# scalar = MinMaxScaler(copy=False)
-scalar = StandardScaler(copy=False)
-# baseModel = DummyRegressor()        # r= -0.446
-# baseModel = SVR(kernel='linear')    # r= -0.103
-# baseModel = Lasso()                 # r= -0.120 WARNINGS
-baseModel = ElasticNet()              # r= -0.121 WARNINGS
-# baseModel = Ridge()                 # r= -0.076
-# baseModel = RandomForestRegressor() # r= -0.218 to -0.323 random
+numAutoLabel = 0 # worse than label spreading?
+scaler = preprocessing.StandardScaler(copy=False)
+# scaler = preprocessing.MinMaxScaler(copy=False)
+
+regressors = [
+	dummy.DummyRegressor(),
+	svm.LinearSVR(),
+	svm.SVR(kernel='rbf', gamma='scale'),
+	linear_model.Ridge(),
+	linear_model.Lasso(),
+	linear_model.ElasticNet(),
+	ensemble.RandomForestRegressor(), 
+	ensemble.GradientBoostingRegressor()
+]
+
 params = dict()
-params['C'] = [pow(10, i) for i in range(-3, 4)]
-params['alpha'] = [pow(10, i) for i in range(-3, 1)]
-params['n_estimators'] = [pow(5, i) for i in range(1, 5)]
-# params['epsilon'] = [pow(10, i) for i in range(-2, 2)]
+params['C'] = [10**i for i in range(-4, 4)]
+# params['alpha'] = [i/10.0 for i in range(1, 10)]
+params['n_estimators'] = [5**i for i in range(1, 5)]
+# params['epsilon'] = [10**i for i in range(-2, 2)]
 # params['degree'] = range(2, 5)
-# params['gamma'] = [pow(5, i) for i in range(-3, 3)]
+# params['gamma'] = [2**i for i in range(-8, 3)]
+
 
 def main():
 	print("Started Trainer main....")
@@ -49,25 +54,24 @@ def main():
 	assert len(empathCols) == 194
 	resultsFrame['color'] = 'blue'
 
-	if numAutoLabel > 0:
-		cols = "negative_emotion medical_emergency pain anger shame torment".split()
-		negSenti = empathFrame[cols].sum(axis=1).sort_values()
-		negSenti = negSenti.head(numAutoLabel).index
-		happyFrame = empathFrame.iloc[negSenti]
+	massFrame = getAutolabels(empathFrame, numAutoLabel)
+	if massFrame is not None and not massFrame.empty:
+		print("concating ")
+		resultsFrame = pd.concat((resultsFrame, massFrame), sort=False)
 
-		massFrame = pd.DataFrame()
-		massFrame['jNum'] = happyFrame.jNum.values
-		massFrame['Timestamp'] = "9999/11/11 11:11:11 AM EST"
-		massFrame['CGI-S'] = 1
-		massFrame['Username'] = 'AUTOLABELED'
-		massFrame['color'] = 'teal'
-		if not massFrame.empty:
-			resultsFrame = pd.concat((resultsFrame, massFrame), sort=False)
-
-	# empathFrame['CGI-S'] = -1 # TODO on label spreading
 	combFrame = resultsFrame.merge(empathFrame, on='jNum') # WORKs GOOD
+	combFrame['intervene'] = combFrame['CGI-S'] > 3
 
-	# print(combFrame[['jNum', 'CGI-S', 'Username']]) # to see contributors
+	# print(combFrame[['jNum', 'CGI-S', 'Concern Labels']]) # to see contributors
+
+	concernCols = set()
+	for sentence in combFrame['Concern Labels'].values.flatten().astype(str):
+		concernCols.update(sentence.split(';'))
+	concernCols.remove('nan')
+	# print(concernCols)
+	for col in concernCols:
+		pass ''' TODO: binary classifiers for concern labels'''
+		
 
 	'''Plotting / Visualization:'''
 	if visualizeCGI:
@@ -82,29 +86,17 @@ def main():
 	'''Select target and scale trainers'''
 	target = combFrame['CGI-S'].astype('int')
 	trainers = combFrame[empathCols]
-	scalar.fit(trainers)
-	scalar.transform(trainers)
+	scaler.fit(trainers)
+	scaler.transform(trainers)
 
-	print("BaseModel =", str(baseModel)[:50], "...")
+	mc = ModelComparer(regressors, params)
+	mc.fit(trainers, target, cv=5, scoring='r2')
+	summary = mc.getModelScores()
+	print(summary)
+	name, bestModel = mc.getBestModel()
+	print("Best Model:", bestModel, sep='\n')
 
-	# In problems where it is desired to give more importance to certain classes 
-	# or certain individual samples keywords class_weight and sample_weight can be used.
-
-	usableParams = baseModel.get_params().keys()
-	toRemove = [k for k in params if k not in usableParams]
-	for badKey in toRemove:
-		del params[badKey]
-
-	'''Train / cross validate:'''
-	clf = GridSearchCV(baseModel, params, cv=6)
-	print("Cross Validation using", clf.cv, "folds")
-	print("Searching Params:", params)
-	clf.fit(trainers, target)
-	crossValFrame = pd.DataFrame(clf.cv_results_)
-	printCols = 'rank_test_score mean_test_score std_test_score params'.split()
-	print(crossValFrame[printCols])
-	print("Chosen Model =", str(clf.best_estimator_)[:50], "...")
-	predicted = clf.predict(trainers)
+	predicted = bestModel.predict(trainers)
 
 	'''Evaluate: '''
 	evalFrame = pd.DataFrame()
@@ -117,14 +109,25 @@ def main():
 	incorrects = evalFrame[incorrects]
 	numCorrects = numTries - len(incorrects.index)
 	pctCorrect = (100.0 * numCorrects) / numTries
-	print("Predictions: %d \t Pct Correct: %.2f%%" % (numTries, pctCorrect))
 	if not incorrects.empty:
-		pass
-		# print("Some Incorrect Predictions: ", incorrects.tail(7), sep='\n')
-		# print("Predicted CGI-S:", incorrects.predicted.describe())
-		# TODO: color incorrect predictions?
+		print("Predictions: %d \t Pct Correct: %.2f%%" % (numTries, pctCorrect))
+		print("Some Incorrect Predictions: ", incorrects.tail(7), sep='\n')
 
 	
+def getAutolabels(empathFrame, numAutoLabel):
+	if numAutoLabel == 0:
+		return None
+	assert numAutoLabel > 0
+	cols = "negative_emotion medical_emergency pain anger shame torment".split()
+	negSenti = empathFrame[cols].sum(axis=1).sort_values()
+	negSenti = negSenti.head(numAutoLabel).index
+	happyFrame = empathFrame.iloc[negSenti]
+
+	massFrame = pd.DataFrame()
+	massFrame['jNum'] = happyFrame.jNum.values
+	massFrame['CGI-S'] = 1
+	massFrame['color'] = 'teal'
+	return massFrame
 
 def scatterPlot(x, y, colors=None):
 	plt.scatter(x=x, y=y, c=colors, s=8)

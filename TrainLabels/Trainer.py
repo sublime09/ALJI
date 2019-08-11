@@ -141,7 +141,7 @@ def scatterPlot(plotFrame, xCol, yCol, trendline=True):
 
 if __name__ == '__main__':
 	main()
-	if visualizeCGI:
+	if plt.get_fignums():
 		resp = input("Press Enter to close...")
-	plt.close()
+		plt.close()
 	print("Done with main")

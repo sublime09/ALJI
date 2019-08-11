@@ -13,7 +13,6 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.model_selection import GridSearchCV
 print(" done!")
 
-# print(config.defaultLabels)
 
 # TODO: DummyRegressor, Lasso, ElasticNet, SVR(kernel='rbf')
 # TODO: EnsembleRegressors?  n_estimators=100

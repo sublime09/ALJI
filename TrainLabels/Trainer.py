@@ -70,11 +70,14 @@ def main():
 	# print(combFrame[['jNum', 'CGI-S', 'Username']]) # to see contributors
 
 	'''Plotting / Visualization:'''
-	plotCols = ['medical_emergency', 'CGI-S', 'color']
-	plotFrame = combFrame[plotCols].copy()
-	plt.ion() #interactive mode to run in background
 	if visualizeCGI:
-		scatterPlot(plotFrame, 'medical_emergency', 'CGI-S')
+		x = combFrame['medical_emergency']
+		y = combFrame['CGI-S']
+		colors = combFrame['color']
+		plt.ion() #interactive mode to run in background
+		scatterPlot(x, y, colors)
+		plotTrend(x, y)
+		return
 
 	'''Select target and scale trainers'''
 	target = combFrame['CGI-S'].astype('int')
@@ -123,20 +126,18 @@ def main():
 
 	
 
-def scatterPlot(plotFrame, xCol, yCol, trendline=True):
-	x = plotFrame[xCol]
-	y = plotFrame[yCol]
-	colors = plotFrame.color
-	plt.scatter(x=x, y=y, c=colors)
-	plt.xlabel(xCol)
-	plt.ylabel(yCol)
-	plt.title(xCol + ' versus ' + yCol)
-	if trendline is not None:
-		trendline = np.poly1d(np.polyfit(x, y, 1))
-		newX = np.arange(0, 1, 0.01)
-		plt.autoscale(False)
-		plt.plot(newX, trendline(newX), color="orange")
+def scatterPlot(x, y, colors=None):
+	plt.scatter(x=x, y=y, c=colors, s=8)
+	plt.xlabel(x.name)
+	plt.ylabel(y.name)
+	plt.title(x.name + ' versus ' + y.name)
 	plt.show()
+
+def plotTrend(x, y):
+	trendline = np.poly1d(np.polyfit(x, y, 1))
+	newX = np.linspace(min(x), max(x), num=100)
+	plt.autoscale(False)
+	plt.plot(newX, trendline(newX), color="orange", lw=1.5)
 
 def findOutliers(combFrame):
 	print("Possible outliers:")

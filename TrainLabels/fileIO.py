@@ -1,6 +1,5 @@
 from config import *
 import os
-import csv
 import pandas as pd
 
 dirNameHere = os.path.dirname(__file__)
@@ -22,8 +21,6 @@ def getEmpathFrame():
 	def colOrder(colName):
 		if colName in ["jNum", "Filename"]:
 			return 0
-		elif "emotion" in colName:
-			return 1
 		else: 
 			return 2
 	cols.sort(key=colOrder)

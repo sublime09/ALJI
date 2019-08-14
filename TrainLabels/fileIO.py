@@ -33,6 +33,8 @@ def getResultFrame():
 	lilFrames = (csvToFrame(f) for f in csvFiles)
 	lilFrames = (f for f in lilFrames if not f.empty)
 	bigFrame = pd.concat(lilFrames)
+	for colName in ['Concern Labels', 'Custom Concern Labels']:
+		bigFrame[colName] = bigFrame[colName].astype(str)
 	return bigFrame
 
 def csvToFrame(csvPathAndName):

@@ -13,18 +13,25 @@ class ModelComparer:
         self.bigFrame = None
         self.lilFrame = None
 
-    def fit(self, X, y, cv=5, scoring='r2', iid=True, **kwargs):
+    def fit(self, X, y, scoring, cv=5, iid=False, **kwargs):
+        print("Grid Searching on models:", end='', flush=True)
         for model in self.models:
             possParams = set(model.get_params().keys())
             chosenParams = set(self.params.keys())
             jointParams = possParams.intersection(chosenParams)
             params = {k:self.params[k] for k in jointParams}
             modelName = type(model).__name__
-            print("Running GridSearchCV for %s..." % modelName)
+            print(modelName+"...", end='', flush=True)
             gs = GridSearchCV(model, params, cv=cv, scoring=scoring, iid=iid)
-            gs.fit(X, y)
+            try:
+                gs.fit(X, y)
+            except ValueError as e:
+                print(e)
+                print("Skipping", modelName, "for above error in fitting^^")
+                continue
             self.grids[modelName] = pd.DataFrame(gs.cv_results_)
             self.bestOf[modelName] = gs.best_estimator_
+        print("done!")
 
     def getBigFrame(self):
         if self.bigFrame is not None:
@@ -39,7 +46,8 @@ class ModelComparer:
     def getLilFrame(self):
         bigFrame = self.getBigFrame()
         rankOnes = bigFrame['rank_test_score'] == 1
-        return bigFrame[rankOnes]
+        uniques = bigFrame[rankOnes].drop_duplicates(subset='estimator')
+        return uniques
 
     def getModelScores(self):
         bigFrame = self.getLilFrame()
@@ -51,4 +59,7 @@ class ModelComparer:
         bigFrame = self.getModelScores()
         bestModelName = bigFrame['estimator'].iloc[-1]
         bestModel = self.bestOf[bestModelName]
-        return bestModelName, bestModel
+        return bestModel
+
+    def __str__(self):
+        return str(self.getModelScores())

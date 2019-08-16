@@ -1,4 +1,9 @@
 
+run: sent
+
+sent: SentTrainer.py
+	python SentTrainer.py
+
 doc: DocTrainer.py
 	python DocTrainer.py
 

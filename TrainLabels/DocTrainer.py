@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 print("Pandas...", end='', flush=True)
 import pandas as pd
 print("Sklearn...", end='', flush=True)
-from sklearn import preprocessing, model_selection
-from sklearn import dummy, svm, linear_model, neighbors, ensemble
+from sklearn import preprocessing, dummy, svm
+from sklearn import linear_model, neighbors, ensemble
 print("ALJI code...", end='', flush=True)
 import fileIO, config
 from ModelComparer import ModelComparer
@@ -89,7 +89,6 @@ def main():
 		plt.grid(which='both')
 		scatterPlot(x, y, colors)
 		plt.title("N=24, Best model for predicting CGI-S")
-		plotTrend(x, y)
 	evaulate(combFrame.jNum, target, cgiPredicted)
 
 	resp = input("<Enter> to now target intervene...")

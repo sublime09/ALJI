@@ -1,7 +1,6 @@
-outName = Trainer.model???
 
-run: Trainer.py
-	@python Trainer.py
+doc: DocTrainer.py
+	python DocTrainer.py
 
 dev: 
 	start ../devProject.sublime-project -WindowStyle Hidden

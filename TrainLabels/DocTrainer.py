@@ -1,14 +1,13 @@
-print("Importing Numpy...", end='', flush=True)
-import numpy as np
-print("PyPlot...", end='', flush=True)
-import matplotlib.pyplot as plt
-print("Pandas...", end='', flush=True)
+print("Importing Pandas...", end='', flush=True)
 import pandas as pd
 print("Sklearn...", end='', flush=True)
 from sklearn import preprocessing, dummy, svm
 from sklearn import linear_model, neighbors, ensemble
+print("PyPlot...", end='', flush=True)
+import matplotlib.pyplot as plt
 print("ALJI code...", end='', flush=True)
-import fileIO, config
+# import fileIO, config
+from Framing import getFrame
 from ModelComparer import ModelComparer
 print("done!")
 
@@ -18,7 +17,6 @@ print("done!")
 visualizeCGI = True
 numAutoLabel = 0 # worse than label spreading?
 folds = 5
-# scaler = preprocessing.PowerTransformer(copy=False)
 scaler = preprocessing.StandardScaler(copy=False)
 # scaler = preprocessing.MinMaxScaler(copy=False)
 
@@ -54,6 +52,22 @@ params['n_estimators'] = [5**i for i in range(1, 4)]
 # params['gamma'] = [2**i for i in range(-8, 3)]
 
 def main():
+	resultsFrame = getFrame("resultsFrame")
+	journalFrame = getFrame("journalFrame")
+	jNums = resultsFrame.jNum
+	print("jNums=", jNums.values, sep='\n')
+	print("journalFrame=", journalFrame, sep='\n')
+
+	breakpoint()
+	combFrame = resultsFrame.merge(journalFrame, on='jNum')
+	# print(combFrame[['jNum', 'CGI-S', 'Concern Labels']]) # to see contributors
+	empathCols = journalFrame.columns.values[2:]
+	assert len(empathCols) == 194
+	
+	breakpoint()
+	return
+
+
 	print("Started Trainer main....")
 	resultsFrame = fileIO.getResultFrame()
 	print("Read", len(resultsFrame), "Participant results ...")
@@ -88,9 +102,13 @@ def main():
 		colors = combFrame['color']
 		plt.grid(which='both')
 		scatterPlot(x, y, colors)
-		plt.title("N=24, Best model for predicting CGI-S")
-	evaulate(combFrame.jNum, target, cgiPredicted)
+		title = "Journal Segmented, "
+		title += "N=" + str(len(trainers))
+		title += ", Best Model"
+		plt.title(title)
 
+	evaulate(combFrame.jNum, target, cgiPredicted)
+	
 	resp = input("<Enter> to now target intervene...")
 
 	intervene = combFrame['CGI-S'] > 3 
@@ -196,6 +214,7 @@ def scatterPlot(x, y, colors=None):
 
 
 def plotTrend(x, y):
+	import numpy as np
 	trendline = np.poly1d(np.polyfit(x, y, 1))
 	newX = [min(x), max(x)]
 	plt.plot(newX, trendline(newX), color="orange", lw=1.5)
